@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D6 Fitness Studio | Not Just a Fitness Studio. A Community That Moves Together.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Liberation+Mono&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #111315;
+      --surface: #181a1d;
+      --surface-2: #1d2023;
+      --accent: #f5a623;
+      --text: #ffffff;
+      --muted: #b5b8ba;
+      --border: rgba(255, 255, 255, 0.1);
+      --border-soft: rgba(255, 255, 255, 0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    svg.ico { width: 24px; height: 24px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .h2 {
+      font-size: clamp(2rem, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .muted { color: var(--muted); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #000;
+      border: 0;
+      border-radius: 12px;
+      padding: 16px 32px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 20px 25px -5px rgba(245, 166, 35, 0.25), 0 8px 10px -6px rgba(245, 166, 35, 0.25);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      min-height: 883px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 80px;
+      background: var(--bg);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #f2f2f2;
+      mix-blend-mode: multiply;
+      opacity: 0.08;
+    }
+    .hero-grad-left {
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: 768px;
+      max-width: 100%;
+      background: linear-gradient(90deg, #111315 0%, rgba(17, 19, 21, 0.9) 50%, rgba(17, 19, 21, 0) 100%);
+      z-index: 1;
+    }
+    .hero-grad-bottom {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 160px;
+      background: linear-gradient(0deg, #111315 0%, rgba(17, 19, 21, 0) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 96px 32px;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    /* Figma: a centred 640px block; text column 576px inside 32px padding */
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width: 640px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      width: max-content;
+      padding: 7px 13px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .badge .dot {
+      width: 8px; height: 8px; border-radius: 9999px; background: var(--accent);
+    }
+    .hero h1 {
+      font-size: clamp(2.25rem, 6vw, 60px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.0;
+      text-transform: uppercase;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero-lead {
+      max-width: 576px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 28px;
+    }
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 8px;
+    }
+    .pill {
+      background: rgba(29, 32, 35, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 17px;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      white-space: nowrap;
+    }
+    .hero-actions { padding-top: 16px; }
+
+    /* ---------- CORE PROGRAMS ---------- */
+    .section {
+      background: var(--bg);
+      padding: 128px 0;
+    }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .section-head .intro {
+      max-width: 448px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 24px;
+    }
+    .stack { display: flex; flex-direction: column; gap: 10px; }
+
+    .programs-head { margin-bottom: 64px; }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 33px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .icon-box {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: rgba(245, 166, 35, 0.1);
+      border: 1px solid rgba(245, 166, 35, 0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+    }
+    .icon-box.solid { background: var(--accent); border-color: transparent; color: #000; }
+    .card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 28px;
+      padding-top: 12px;
+    }
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 22.75px;
+    }
+    .card .tag {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding-top: 12px;
+      margin-top: auto;
+    }
+    .card.signature { border-color: rgba(245, 166, 35, 0.4); position: relative; }
+    .badge-signature {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--accent);
+      color: #000;
+      border-radius: 9999px;
+      padding: 4px 12px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .card.custom {
+      border-style: dashed;
+      border-color: rgba(255, 255, 255, 0.2);
+      background: linear-gradient(128.9deg, #1d2023 0%, #111315 100%);
+      justify-content: space-between;
+    }
+    .mono {
+      font-family: 'Liberation Mono', ui-monospace, monospace;
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+    .card.custom h3 { font-size: 24px; line-height: 32px; padding-top: 0; }
+
+    /* Form (name + phone only) */
+    .lead-form { display: flex; flex-direction: column; gap: 16px; padding-top: 16px; }
+    .field { display: flex; flex-direction: column; gap: 4px; }
+    .field label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.55px;
+      text-transform: uppercase;
+    }
+    .field input {
+      background: #111315;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 12px 17px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+    }
+    .field input::placeholder { color: rgba(255, 255, 255, 0.4); }
+    .field input:focus { border-color: var(--accent); }
+    .btn-block { width: 100%; padding: 14px 16px; font-size: 12px; letter-spacing: 0.6px; box-shadow: 0 10px 15px -3px rgba(245, 166, 35, 0.2), 0 4px 6px -4px rgba(245, 166, 35, 0.2); }
+    .form-status {
+      font-size: 13px;
+      min-height: 18px;
+      text-align: center;
+    }
+    .form-status.ok { color: var(--accent); }
+    .form-status.err { color: #ff6b6b; }
+
+    /* ---------- COACH ---------- */
+    .coach {
+      position: relative;
+      background: var(--surface);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+      padding: 129px 0;
+      overflow: hidden;
+    }
+    .coach::before {
+      content: "";
+      position: absolute;
+      top: -128px; left: -128px;
+      width: 384px; height: 384px;
+      border-radius: 9999px;
+      background: rgba(245, 166, 35, 0.1);
+      filter: blur(70px);
+      pointer-events: none;
+    }
+    .coach-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 64px;
+      align-items: center;
+    }
+    .coach-photo {
+      grid-column: 1 / span 5;
+      position: relative;
+    }
+    .coach-photo .glow {
+      position: absolute;
+      inset: -4px;
+      border-radius: 24px;
+      background: linear-gradient(53deg, #f5a623 0%, rgba(245, 166, 35, 0) 100%);
+      filter: blur(4px);
+      opacity: 0.3;
+    }
+    .coach-photo .frame {
+      position: relative;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      height: 624px;
+      box-shadow: 0 0 45px -10px rgba(245, 166, 35, 0.3);
+    }
+    .coach-photo .frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .coach-photo .frame::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, #111315 0%, rgba(17, 19, 21, 0) 60%);
+      opacity: 0.8;
+    }
+    .coach-caption {
+      position: absolute;
+      left: 24px; right: 24px; bottom: 24px;
+      z-index: 2;
+      display: flex; flex-direction: column; gap: 7px;
+    }
+    .coach-caption .role {
+      background: var(--accent);
+      color: #000;
+      border-radius: 6px;
+      padding: 3.5px 12px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      width: max-content;
+    }
+    .coach-caption .name { font-size: 24px; font-weight: 800; }
+    .coach-caption .place {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .coach-text {
+      grid-column: 6 / span 7;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .chip {
+      width: max-content;
+      background: rgba(245, 166, 35, 0.1);
+      border: 1px solid rgba(245, 166, 35, 0.2);
+      border-radius: 9999px;
+      padding: 7px 15px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .coach-text .h2 { font-size: clamp(1.9rem, 3.4vw, 48px); }
+    .coach-text .role-line {
+      color: var(--accent);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+    }
+    .coach-text .bio {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 24px;
+    }
+    .coach-text .bio strong { color: #fff; font-weight: 700; }
+    .quote {
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 4px 20px;
+      color: rgba(255, 255, 255, 0.9);
+      font-style: italic;
+      font-size: 16px;
+      line-height: 24px;
+    }
+    .sub-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sub-head .label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .sub-head .rule {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .achievements { display: flex; flex-direction: column; gap: 24px; padding-top: 16px; }
+    .achieve-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .achieve {
+      flex: 1 1 0;
+      min-width: 180px;
+      background: var(--bg);
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      padding: 13px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .achieve .star { color: var(--accent); font-size: 12px; line-height: 16px; }
+    .achieve .t { font-size: 12px; font-weight: 700; line-height: 16px; }
+    .achieve .d { font-size: 12px; color: var(--muted); line-height: 16px; }
+    .race-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .race {
+      background: var(--bg);
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      padding: 11px 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 16px;
+    }
+    .race::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 9999px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .race.wide { grid-column: span 2; }
+    .coach-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 16px;
+    }
+    .coach-cta .response { color: var(--muted); font-size: 12px; }
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--accent); color: #000;
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-size: 12px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase;
+    }
+    .btn-wa svg.ico { width: 18px; height: 18px; }
+
+    /* ---------- COMMUNITY ---------- */
+    .community { padding: 128px 0; background: var(--bg); }
+    .community-head {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: 10px; max-width: 768px; margin: 0 auto 64px;
+    }
+    .community-head p { color: var(--muted); font-size: 16px; line-height: 24px; }
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+    }
+    .pillar {
+      background: var(--surface);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 33px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .pillar .num { color: var(--accent); font-size: 30px; font-weight: 800; line-height: 36px; }
+    .pillar h3 { font-size: 18px; font-weight: 700; text-transform: uppercase; line-height: 28px; padding-top: 8px; }
+    .pillar p { color: var(--muted); font-size: 14px; line-height: 22.75px; }
+
+    /* ---------- TESTIMONIALS ---------- */
+    .testimonials {
+      position: relative;
+      background: var(--surface);
+      border-top: 1px solid var(--border-soft);
+      padding: 129px 32px 128px;
+      overflow: hidden;
+    }
+    .testimonials::before {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 900px; height: 500px;
+      transform: translate(-50%, -50%);
+      border-radius: 9999px;
+      background: linear-gradient(180deg, rgba(245, 166, 35, 0.1) 0%, rgba(245, 166, 35, 0) 100%);
+      filter: blur(70px);
+      pointer-events: none;
+    }
+    .testimonials-inner {
+      position: relative;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 80px;
+    }
+    .t-head {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: 12px; max-width: 768px;
+    }
+    .pill-soft {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 7px 15px;
+      color: var(--muted);
+      font-size: 12px; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .pill-soft .dot { width: 8px; height: 8px; border-radius: 9999px; background: var(--accent); }
+    .t-head .sub { color: var(--muted); font-size: 16px; line-height: 24px; max-width: 576px; }
+
+    /* Carousel: 768px card, arrows sit 48px outside the card, layered backdrop cards behind */
+    .carousel { position: relative; width: 100%; max-width: 768px; }
+    .slide-stack { position: relative; }
+    .slide-back {
+      position: absolute;
+      bottom: 0;
+      background: rgba(24, 26, 29, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      z-index: 0;
+    }
+    .slide-back.b2 { top: -10px; left: 53px; right: 53px; background: rgba(29, 32, 35, 0.6); }
+    .slide-back.b1 { top: -5px; left: 27px; right: 27px; background: rgba(24, 26, 29, 0.85); }
+    .slide-card {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(180deg, #181a1d 0%, #111315 100%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      padding: 41px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+    }
+    .slide-card::before {
+      content: "";
+      position: absolute;
+      top: -96px; right: -96px;
+      width: 240px; height: 240px;
+      border-radius: 9999px;
+      background: rgba(245, 166, 35, 0.1);
+      filter: blur(32px);
+    }
+    .slide-top {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; padding-bottom: 24px;
+    }
+    .result-tag {
+      background: rgba(245, 166, 35, 0.15);
+      border: 1px solid rgba(245, 166, 35, 0.3);
+      border-radius: 9999px;
+      padding: 5px 13px;
+      color: var(--accent);
+      font-size: 11px; font-weight: 800; letter-spacing: 0.55px; text-transform: uppercase;
+    }
+    .counter { font-family: 'Liberation Mono', ui-monospace, monospace; color: var(--muted); font-size: 12px; }
+    .quote-text {
+      color: #fff;
+      font-style: italic;
+      font-size: 20px;
+      line-height: 28px;
+      padding-bottom: 32px;
+    }
+    .quote-text p + p { margin-top: 14px; }
+    .slide-card .quote-text { font-size: 18px; line-height: 28px; }
+    .slide-card .quote-text p { font-style: italic; }
+    .author {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 25px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .avatar {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      background: rgba(245, 166, 35, 0.2);
+      border: 1px solid rgba(245, 166, 35, 0.4);
+      color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 16px;
+      flex-shrink: 0;
+    }
+    .author .name { font-size: 18px; font-weight: 700; letter-spacing: 0.45px; }
+    .author .role { color: var(--muted); font-size: 14px; line-height: 20px; }
+    .t-title {
+      color: var(--accent); font-size: 14px; font-weight: 800;
+      letter-spacing: 0.6px; text-transform: uppercase; padding-bottom: 12px;
+    }
+    .slide-card.fade { animation: tFade 0.35s ease; }
+    @keyframes tFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    .dots { display: flex; justify-content: center; gap: 10px; padding-top: 32px; }
+    .dots button {
+      width: 8px; height: 8px; padding: 0; border: 0; border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.2); cursor: pointer;
+      transition: width 0.25s ease, background 0.25s ease;
+    }
+    .dots button.active { width: 32px; background: var(--accent); }
+    .dots button:focus-visible, .car-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .car-btn {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+      width: 44px; height: 44px; border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff; cursor: pointer;
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .car-btn svg.ico { width: 20px; height: 20px; stroke-width: 2.2; }
+    .car-btn:hover { background: rgba(245, 166, 35, 0.2); }
+    .car-btn.prev { left: -48px; }
+    .car-btn.next { right: -48px; }
+
+    /* ---------- EVENTS (follows Testimonials, per Figma) ---------- */
+    .events { background: var(--bg); border-top: 1px solid var(--border-soft); padding: 81px 32px 80px; }
+    .events-card {
+      max-width: 1280px;
+      margin: 0 auto;
+      background: linear-gradient(90deg, #181a1d 0%, #1d2023 50%, #181a1d 100%);
+      border: 1px solid rgba(245, 166, 35, 0.3);
+      border-radius: 24px;
+      padding: 49px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .events-card .pill-tag {
+      background: rgba(245, 166, 35, 0.2);
+      border-radius: 9999px;
+      padding: 3.5px 12px;
+      width: max-content;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .events-card h3 { font-size: 36px; font-weight: 800; line-height: 40px; text-transform: uppercase; padding-top: 3px; }
+    .events-card p { color: var(--muted); font-size: 14px; line-height: 20px; max-width: 576px; padding-top: 8px; }
+    .events-card .btn { border-radius: 12px; box-shadow: none; }
+
+    /* ---------- GALLERY ---------- */
+    .gallery-section { background: var(--surface); border-top: 1px solid var(--border-soft); padding: 129px 0 128px; }
+    .gallery-head { margin-bottom: 48px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 288px;
+      gap: 32px;
+    }
+    .g-item {
+      position: relative;
+      background: #111315;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      height: 288px;
+    }
+    .g-item.featured { border-color: rgba(245, 166, 35, 0.4); background: linear-gradient(143deg, #181a1d 0%, #1d2023 50%, #111315 100%); justify-content: space-between; }
+    .g-slides { position: absolute; inset: 0; z-index: 0; }
+    .g-slides img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.9s ease;
+    }
+    .g-slides img.active { opacity: 1; }
+    .g-shade {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(0deg, rgba(17, 19, 21, 0.92) 0%, rgba(17, 19, 21, 0.45) 45%, rgba(17, 19, 21, 0.25) 100%);
+      pointer-events: none;
+    }
+    .g-item > *:not(.g-slides):not(.g-shade):not(.g-dots) { position: relative; z-index: 2; }
+    .g-top { display: flex; align-items: center; justify-content: space-between; }
+    .g-foot {
+      border-top: 1px solid var(--border);
+      padding-top: 13px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .g-foot .k { color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; }
+    .g-tag {
+      background: rgba(245, 166, 35, 0.2);
+      border: 1px solid rgba(245, 166, 35, 0.3);
+      border-radius: 4px;
+      padding: 5px 11px;
+      color: var(--accent);
+      font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .g-tag.solid { background: var(--accent); border-color: transparent; color: #000; }
+    .g-title { font-size: 16px; font-weight: 700; text-transform: uppercase; line-height: 24px; }
+    .g-title.big { font-size: 30px; font-weight: 800; letter-spacing: -0.75px; line-height: 36px; }
+    .g-title.med { font-size: 24px; font-weight: 800; letter-spacing: -0.6px; line-height: 32px; }
+    .g-sub { color: var(--muted); font-size: 12px; line-height: 19.5px; }
+    .g-emoji { color: var(--accent); font-size: 20px; }
+    .g-follow {
+      background: var(--accent); color: #000;
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 12px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase;
+      margin-top: 8px;
+    }
+    /* Figma Gallery Item 1: caption block inset 17px from left, right and bottom */
+    .g-caption { position: absolute; left: 17px; right: 17px; bottom: 17px; z-index: 2; display: flex; flex-direction: column; gap: 6px; }
+    .g-caption .g-tag { width: max-content; }
+    .g-caption .g-title { color: #fff; font-size: 24px; font-weight: 800; letter-spacing: -0.6px; line-height: 30px; text-transform: uppercase; }
+    .g-stack { display: flex; flex-direction: column; gap: 4px; }
+    .g-stack.gap8 { gap: 8px; }
+    .g-dots {
+      position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+      z-index: 3; display: flex; gap: 6px;
+    }
+    .g-dots button {
+      width: 6px; height: 6px; padding: 0; border: 0; border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.35); cursor: pointer;
+      transition: width 0.25s ease, background 0.25s ease;
+    }
+    .g-dots button.active { width: 18px; background: var(--accent); }
+    .g-dots button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .g-live { display: flex; align-items: center; gap: 6px; color: var(--accent); font-size: 12px; font-family: 'Liberation Mono', ui-monospace, monospace; letter-spacing: 0; text-transform: uppercase; }
+    .g-live i { width: 8px; height: 8px; border-radius: 9999px; background: var(--accent); display: inline-block; }
+
+    /* ---------- TOP NAVIGATION (sticky) ---------- */
+    .topnav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(17, 19, 21, 0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topnav-inner {
+      position: relative;
+      max-width: 1280px;
+      margin: 0 auto;
+      height: 80px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .topnav-logo { display: block; width: 106.84px; height: 48px; flex-shrink: 0; }
+    .topnav-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .nav-links { list-style: none; display: flex; align-items: center; gap: 28px; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-mobile-cta { display: none; }
+    .nav-cta {
+      background: var(--accent);
+      color: #000;
+      border-radius: 9999px;
+      padding: 10px 24px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+      box-shadow: 0 10px 15px -3px rgba(245, 166, 35, 0.2), 0 4px 6px -4px rgba(245, 166, 35, 0.2);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .nav-cta:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .nav-toggle {
+      display: none;
+      background: none; border: 0; cursor: pointer;
+      width: 40px; height: 40px;
+      flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+    }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; }
+    section[id], footer[id] { scroll-margin-top: 81px; }
+    @media (max-width: 1280px) { .nav-links { gap: 20px; } }
+    @media (max-width: 1180px) {
+      .nav-toggle { display: flex; }
+      .nav-cta { display: none; }
+      .nav-links {
+        display: none;
+        position: absolute; top: 80px; left: 0; right: 0;
+        flex-direction: column; align-items: flex-start; gap: 0;
+        background: rgba(17, 19, 21, 0.98);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 32px 20px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; border-top: 1px solid var(--border-soft); }
+      .nav-links a { display: block; padding: 14px 0; font-size: 13px; }
+      .nav-mobile-cta { display: block; }
+      .nav-mobile-cta a { color: var(--accent); }
+    }
+    @media (max-width: 480px) { .topnav-inner { padding: 0 20px; } .nav-links { padding: 8px 20px 20px; } }
+
+    /* ---------- FINAL CALL TO ACTION ---------- */
+    .cta-final {
+      background: var(--surface);
+      border-top: 1px solid var(--border-soft);
+      padding: 128px 192px;
+      text-align: center;
+    }
+    .cta-final-inner {
+      max-width: 896px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .cta-final h2 {
+      font-size: clamp(2.2rem, 5.5vw, 60px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin-top: 12px;
+    }
+    .cta-final .lead {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 28px;
+      max-width: 672px;
+      margin: 14px 0 30px;
+    }
+    .cta-box {
+      width: 100%;
+      max-width: 672px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 41px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      text-align: left;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .cta-buttons { display: flex; gap: 16px; }
+    .cta-btn {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 17px 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .cta-btn svg.ico { width: 18px; height: 18px; }
+    .cta-btn:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-1px); }
+    .cta-btn.primary {
+      background: var(--accent);
+      border-color: transparent;
+      color: #000;
+      font-weight: 800;
+    }
+    .cta-btn.primary:hover { background: var(--accent); filter: brightness(1.05); }
+    .cta-divider {
+      border-top: 1px solid var(--border);
+      padding-top: 17px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .cta-address { display: flex; gap: 8px; align-items: flex-start; max-width: 448px; }
+    .cta-address strong { display: block; color: #fff; font-size: 12px; font-weight: 600; line-height: 16px; }
+    .cta-address span { display: block; color: var(--muted); font-size: 12px; line-height: 16px; }
+    .cta-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .cta-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 15px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .cta-chip svg.ico { width: 16px; height: 16px; }
+    .cta-chip.accent {
+      background: rgba(245, 166, 35, 0.1);
+      border-color: rgba(245, 166, 35, 0.3);
+      color: var(--accent);
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border-soft);
+      padding: 65px 32px 64px;
+    }
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+    .footer-brand { grid-column: 1 / span 5; display: flex; flex-direction: column; gap: 22px; }
+    .footer-brand img { height: 56px; width: 124.66px; max-width: none; align-self: flex-start; object-fit: contain; }
+    .footer-brand .tagline { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
+    .footer-nav { grid-column: 6 / span 4; display: flex; gap: 16px; }
+    .footer-col { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col li, .footer-col a { color: var(--muted); font-size: 12px; font-weight: 600; line-height: 16px; }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-social { grid-column: 10 / span 3; display: flex; justify-content: flex-end; text-align: right; }
+    .copyright { color: rgba(255, 255, 255, 0.5); font-size: 12px; line-height: 16px; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1100px) {
+      .programs-grid, .pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .coach-photo, .coach-text { grid-column: 1 / -1; }
+      .coach-photo .frame { height: 520px; }
+      .footer-brand, .footer-nav, .footer-social { grid-column: 1 / -1; }
+      .footer-social { justify-content: flex-start; text-align: left; }
+      .cta-final { padding: 128px 64px; }
+    }
+
+    @media (max-width: 768px) {
+      .container, .hero-content { padding-left: 20px; padding-right: 20px; }
+      .hero-inner { width: 100%; padding: 0; }
+      .section, .coach, .community, .gallery-section, .testimonials { padding-top: 80px; padding-bottom: 80px; }
+      .programs-grid, .pillars, .gallery-grid { grid-template-columns: 1fr; }
+      .race-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .race.wide { grid-column: span 2; }
+      .coach-grid { gap: 40px; }
+      .events { padding: 48px 20px; }
+      .events-card { padding: 28px; }
+      .testimonials { padding-left: 20px; padding-right: 20px; }
+      .slide-card { padding: 28px; }
+      .slide-card .quote-text { font-size: 16px; line-height: 26px; }
+      .car-btn.prev { left: 0; }
+      .car-btn.next { right: 0; }
+      .slide-back.b2 { left: 20px; right: 20px; }
+      .slide-back.b1 { left: 10px; right: 10px; }
+      .hero { min-height: 720px; }
+      .hero-lead { font-size: 16px; line-height: 26px; }
+      .footer { padding: 48px 20px; }
+      .footer-nav { flex-direction: column; gap: 28px; }
+      .gallery-head, .programs-head { margin-bottom: 40px; }
+      .cta-final { padding: 80px 20px; }
+      .cta-box { padding: 24px; }
+      .cta-buttons { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .race-grid { grid-template-columns: 1fr; }
+      .race.wide { grid-column: auto; }
+      .btn { width: 100%; }
+      .hero-actions .btn { width: 100%; }
+      .gallery-grid { grid-auto-rows: 288px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOP NAVIGATION ============ -->
+  <nav class="topnav" aria-label="Main navigation">
+    <div class="topnav-inner">
+      <a class="topnav-logo" href="#top" aria-label="D6 Fitness Studio home">
+        <img src="assets/d6-logo.png" alt="D6 Fitness Studio" />
+      </a>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a class="active" href="#top">Home</a></li>
+        <li><a href="#programs">Training</a></li>
+        <li><a href="#coach">Meet Our Coach</a></li>
+        <li><a href="#community">D6 Community</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#book">Contact Us</a></li>
+        <li class="nav-mobile-cta"><a href="#trial">Join D6</a></li>
+      </ul>
+
+      <a class="nav-cta" href="#trial">Join D6</a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="assets/hero-athlete.jpg" alt="" onerror="this.style.display='none'" />
+    </div>
+    <div class="hero-grad-left" aria-hidden="true"></div>
+    <div class="hero-grad-bottom" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-inner">
+        <div class="badge"><span class="dot"></span></div>
+
+        <h1>
+          NOT JUST A FITNESS<br />
+          STUDIO. A <span class="accent">COMMUNITY</span> THAT<br />
+          MOVES <span class="accent">TOGETHER.</span>
+        </h1>
+
+        <p class="hero-lead">
+          D6 is where strength meets endurance, discipline meets determination, and individuals become a team. Whether you're beginning your fitness journey or preparing for your next global or national fitness competition, we train, encourage, and grow together.
+        </p>
+
+        <div class="pills">
+          <span class="pill">⚡ Purposeful Training</span>
+          <span class="pill">🏆 Expert Coaching</span>
+          <span class="pill">🤝 Stronger Together</span>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn" href="#programs">START YOUR JOURNEY <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ CORE PROGRAMS (includes trial form) ============ -->
+  <section class="section" id="programs">
+    <div class="container">
+      <div class="section-head programs-head">
+        <div class="stack">
+          <span class="eyebrow">TRAIN WITH PURPOSE</span>
+          <h2 class="h2">ENGINEERED FOR<br />PERFORMANCE &amp; LONGEVITY</h2>
+        </div>
+        <p class="intro">From first-time lifters to HYROX and marathon competitors, our science-backed progressive programming builds real, durable athleticism.</p>
+      </div>
+
+      <div class="programs-grid">
+        <!-- Program 1 -->
+        <article class="card">
+          <div class="icon-box">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></svg>
+          </div>
+          <h3>STRENGTH &amp; CONDITIONING</h3>
+          <p>Build a stronger, more resilient body that performs better in training, competitive sports, and everyday dynamic life. Focus on pure mechanical tension, barbell fundamentals, and injury resistance.</p>
+          <span class="tag">BUILD POWER. BUILD RESILIENCE.</span>
+        </article>
+
+        <!-- Program 2 -->
+        <article class="card">
+          <div class="icon-box">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M7 9.5l5 1.5 5-1.5M12 11v3M9 21l1.5-6.5L12 14l1.5 0.5L15 21"/></svg>
+          </div>
+          <h3>FUNCTIONAL FITNESS</h3>
+          <p>Exercises that mirror daily movements like lifting, bending and carrying. We train your whole body to move smoothly and work as a team. From everyday tasks of lifting groceries, playing with kids or taking the stairs effortlessly, we train you to burn fat and boost stamina at your own pace. Protect your back and knees by strengthening your core and joints with step-by-step guidance and zero judgment.</p>
+          <span class="tag">WORKOUTS BUILT FOR REAL LIFE</span>
+        </article>
+
+        <!-- Program 3 (signature) -->
+        <article class="card signature">
+          <span class="badge-signature">SIGNATURE</span>
+          <div class="icon-box solid">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c1 3.5 4.5 5 4.5 9.5A4.5 4.5 0 0 1 12 17a4.5 4.5 0 0 1-4.5-4.5c0-2 1-3.2 2-4.2.2 1.4.8 2.2 1.8 2.7C11 7.5 11.2 5.5 12 3z"/></svg>
+          </div>
+          <h3>HYBRID PERFORMANCE<br />(HYROX)</h3>
+          <p>A relentless blend of functional strength (sleds, wall-balls, kettlebells) and pure cardiovascular stamina. Targeted conditioning tuned directly for official HYROX and obstacle course races.</p>
+          <span class="tag">STRENGTH FOR EVERY STATION</span>
+        </article>
+
+        <!-- Program 4 -->
+        <article class="card">
+          <div class="icon-box">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="14" cy="4.5" r="2"/><path d="M7 21l3-5 3 1 2-4-2-2-3 1-2 3M13 14l2 4 3-1"/></svg>
+          </div>
+          <h3>ENDURANCE &amp; RUNNING</h3>
+          <p>Tailored coaching for anyone looking to run their first continuous 5K, military obstacle races, or multi-stage state and national half marathons along Chennai's ECR corridor.</p>
+          <span class="tag">FROM FIRST MILE TO FINISH LINE</span>
+        </article>
+
+        <!-- Program 5 -->
+        <article class="card">
+          <div class="icon-box">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+          </div>
+          <h3>PERSONALISED 1-ON-1<br />COACHING</h3>
+          <p>1-on-1 private programming engineered specifically around your biometric profile, prior injuries, posture, metabolic goals, and demanding executive lifestyle.</p>
+          <span class="tag">DIRECT ACCOUNTABILITY</span>
+        </article>
+
+        <!-- Program 6: Form (Name + Phone only) -->
+        <article class="card custom" id="trial">
+          <div>
+            <div style="display:flex;flex-direction:column;gap:8px;padding-bottom:24px;">
+              <span class="mono">CUSTOM EVALUATION</span>
+              <h3>NOT SURE WHERE TO<br />BEGIN?</h3>
+              <p class="muted" style="color:var(--muted);font-size:14px;line-height:22.75px;">Come in for a complimentary movement screening and physical goal assessment with Coach Dilip at our Neelankarai facility.</p>
+            </div>
+          </div>
+
+          <form class="lead-form" id="trialForm" novalidate>
+            <div class="field">
+              <label for="name">Full Name</label>
+              <input id="name" name="name" type="text" placeholder="Your Full Name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="phone">Mobile Number</label>
+              <input id="phone" name="phone" type="tel" placeholder="Mobile Number (e.g. +91 98765 43210)" autocomplete="tel" required />
+            </div>
+            <button class="btn btn-block" id="submitBtn" type="submit">BOOK A TRIAL SESSION</button>
+            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+          </form>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MEET COACH ============ -->
+  <section class="coach" id="coach">
+    <div class="container">
+      <div class="coach-grid">
+        <div class="coach-photo">
+          <div class="glow" aria-hidden="true"></div>
+          <div class="frame">
+            <img src="assets/coach-dilip.jpg" alt="Coach Dilip, Head Coach and Founder at D6 Fitness Studio" onerror="this.style.display='none'" />
+            <div class="coach-caption">
+              <span class="role">HEAD COACH &amp; FOUNDER</span>
+              <span class="name">DILIP</span>
+              <span class="place">D6 FITNESS STUDIO • NEELANKARAI</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="coach-text">
+          <span class="chip">LEADERSHIP &amp; EXPERTISE</span>
+          <h2 class="h2">GUIDANCE THAT BUILDS<br />CONFIDENCE. COACHING<br />THAT BUILDS PERFORMANCE.</h2>
+          <p class="role-line">18+ Years of Coaching Experience | Master Diploma Trainer | Hybrid Endurance Athlete</p>
+          <p class="bio">
+            Whether you are walking into our studio for the very first time or preparing for a 500 km endurance challenge, Coach Dilip is here to guide you every step of the way. With over 18 years of hands-on coaching experience, Coach Dilip holds a <strong>Master Diploma in Fitness Training</strong>—one of the highest credentials in the industry. Beyond certificates and biomechanical science, his real superpower is breaking down complex fitness concepts into clear, simple habits that work for everyday people.
+          </p>
+
+          <blockquote class="quote">
+            "Fitness isn't just about how much weight you can lift on day one. It's about building a body that feels strong, healthy, and energized for the rest of your life."
+          </blockquote>
+
+          <div class="achievements">
+            <div class="sub-head"><span class="label">BATTLE-TESTED RACING LEGACY</span><span class="rule"></span></div>
+            <div class="achieve-row">
+              <div class="achieve"><span class="star">★</span><div><div class="t">HYROX Mumbai</div><div class="d">World-standard functional fitness testing</div></div></div>
+              <div class="achieve"><span class="star">★</span><div><div class="t">Devil's Circuit</div><div class="d">5KM military obstacle assault finisher</div></div></div>
+              <div class="achieve"><span class="star">★</span><div><div class="t">HYFIT Games Medalist</div><div class="d">Competitive multi-discipline hybrid podium</div></div></div>
+            </div>
+
+            <div class="sub-head" style="margin-top:8px;"><span class="label" style="color:var(--accent);">MULTI-DISCIPLINE MARATHONS &amp; RACES</span><span class="rule"></span></div>
+            <div class="race-grid">
+              <div class="race">NMDC Hyderabad Marathon</div>
+              <div class="race">Hexaware Dream Runners Half Marathon</div>
+              <div class="race">TCS 10K Run &amp; SBI Green Marathon</div>
+              <div class="race">Chennai Rolling Run @ ORR</div>
+              <div class="race wide">Raceify 500 KM Cycling</div>
+            </div>
+          </div>
+
+          <div class="coach-cta">
+            <a class="btn-wa" href="https://wa.me/919962811548" target="_blank" rel="noopener">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg>
+              CONNECT WITH COACH ON WHATSAPP
+            </a>
+            <span class="response">Response time: typically under 2 hours</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMMUNITY ============ -->
+  <section class="community" id="community">
+    <div class="container">
+      <div class="community-head">
+        <span class="eyebrow">OUR CULTURE</span>
+        <h2 class="h2">INDIVIDUAL EFFORT. COLLECTIVE<br />STRENGTH.</h2>
+        <p>At D6, no one trains alone. We stay, we cheer, we push, and we celebrate every single finish line together. It is an ego-free zone where beginners work shoulder-to-shoulder with trained athletes.</p>
+      </div>
+
+      <div class="pillars">
+        <article class="pillar">
+          <span class="num">01</span>
+          <h3>HYBRID CHALLENGES</h3>
+          <p>Every week, we conduct high-energy hybrid challenges designed for all D6 members to build stamina and endurance, creating a community-driven workout where athletes push their limits and encourage one another.</p>
+        </article>
+        <article class="pillar">
+          <span class="num">02</span>
+          <h3>HYROX SIMULATION DAYS</h3>
+          <p>Experience tournament pressure in a supportive team environment. Partner relays, sled-push battles, and station pacing.</p>
+        </article>
+        <article class="pillar">
+          <span class="num">03</span>
+          <h3>MARATHON &amp; RACE TRAINING</h3>
+          <p>Our community is trained from 5km to full marathon with a structured plan and personalized guidance provided to each individual member, covering pacing strategy, nutrition, recovery tools, and injury prevention frameworks.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-inner">
+      <div class="t-head">
+        <span class="pill-soft"><span class="dot"></span>VERIFIED D6 COMMUNITY VOICES</span>
+        <h2 class="h2">REAL PEOPLE. REAL PROGRESS.</h2>
+        <p class="sub">Authentic stories from members who transformed their strength, mindset, and endurance with Coach Dilip.</p>
+      </div>
+
+      <div class="carousel" id="carousel" aria-roledescription="carousel" aria-live="polite">
+        <div class="slide-stack">
+          <div class="slide-back b2" aria-hidden="true"></div>
+          <div class="slide-back b1" aria-hidden="true"></div>
+          <button class="car-btn prev" id="tPrev" type="button" aria-label="Previous testimonial">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="car-btn next" id="tNext" type="button" aria-label="Next testimonial">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <div class="slide-card" id="tSlide"></div>
+        </div>
+        <div class="dots" id="tDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVENTS ============ -->
+  <section class="events" id="events">
+    <div class="events-card">
+      <div>
+        <span class="pill-tag">UPCOMING CHALLENGES</span>
+        <h3>EVENTS COMING SOON</h3>
+        <p>Register your interest for our upcoming D6 In-House Hybrid Throwdown &amp; Races</p>
+      </div>
+      <a class="btn" href="#trial">GET EVENT UPDATES</a>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="gallery-head">
+        <span class="eyebrow">COMMUNITY IN ACTION</span>
+        <h2 class="h2">D6 GALLERY</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Item 1: photo slideshow -->
+        <div class="g-item slide" data-slideshow>
+          <div class="g-slides">
+            <img class="active" src="assets/gallery/conditioning-floor/01.jpg" alt="Neelankarai studio floor" />
+            <img src="assets/gallery/conditioning-floor/02.jpg" alt="Neelankarai studio floor" />
+            <img src="assets/gallery/conditioning-floor/03.jpg" alt="Neelankarai studio floor" />
+            <img src="assets/gallery/conditioning-floor/04.jpg" alt="Neelankarai studio floor" />
+          </div>
+          <div class="g-shade"></div>
+          <div class="g-caption">
+            <span class="g-tag solid" style="width:max-content;">CONDITIONING FLOOR</span>
+            <span class="g-title" style="color:#fff;">STUDIO IMAGES</span>
+            <span class="g-sub">Neelankarai Studio Floor</span>
+          </div>
+        </div>
+
+        <!-- Item 2: HYROX photo slideshow -->
+        <div class="g-item slide" data-slideshow>
+          <div class="g-slides">
+            <img class="active" src="assets/gallery/hyrox-hybrid-arena/01.jpg" alt="Athlete training at the HYROX arena" />
+            <img src="assets/gallery/hyrox-hybrid-arena/02.jpg" alt="HYROX arena" />
+            <img src="assets/gallery/hyrox-hybrid-arena/03.jpg" alt="HYFIT Games leaderboard" />
+          </div>
+          <div class="g-shade"></div>
+          <div class="g-caption">
+            <span class="g-tag solid">HYROX &amp; HYBRID ARENA</span>
+            <span class="g-title">SLED PUSHES &amp; ERGS</span>
+            <span class="g-sub">Endurance Building &amp; Simulation days to the game Arena<br />we bring it all here.</span>
+          </div>
+        </div>
+
+        <!-- Item 3: Community photo slideshow -->
+        <div class="g-item slide" data-slideshow>
+          <div class="g-slides">
+            <img class="active" src="assets/gallery/endurance-track/01.jpg" alt="Runner on the track" />
+            <img src="assets/gallery/endurance-track/02.jpg" alt="D6 members with medals" />
+            <img src="assets/gallery/endurance-track/03.jpg" alt="Runners on the road" />
+            <img src="assets/gallery/endurance-track/04.jpg" alt="D6 members on the course" />
+            <img src="assets/gallery/endurance-track/05.jpg" alt="D6 squad with banner" />
+            <img src="assets/gallery/endurance-track/06.jpg" alt="D6 squad together" />
+            <img src="assets/gallery/endurance-track/07.jpg" alt="D6 members at the night run" />
+            <img src="assets/gallery/endurance-track/08.jpg" alt="D6 members at the studio" />
+            <img src="assets/gallery/endurance-track/09.jpg" alt="D6 community on the green turf" />
+          </div>
+          <div class="g-shade"></div>
+          <div class="g-caption">
+            <span class="g-tag solid">ENDURANCE &amp; TRACK</span>
+            <span class="g-title">D6 COMMUNITY</span>
+            <span class="g-sub">Pictures of a community that laughs and encourages together as one big happy family — celebration events, race finish lines, and shared milestones.</span>
+          </div>
+        </div>
+
+        <!-- Item 4: Podium photo slideshow -->
+        <div class="g-item slide" data-slideshow>
+          <div class="g-slides">
+            <img class="active" src="assets/gallery/podium-finish-lines/01.jpg" alt="Finish line celebration" />
+            <img src="assets/gallery/podium-finish-lines/02.jpg" alt="D6 members at the race" />
+            <img src="assets/gallery/podium-finish-lines/03.jpg" alt="Athlete resting after the half marathon" />
+            <img src="assets/gallery/podium-finish-lines/04.jpg" alt="Runners with medals" />
+            <img src="assets/gallery/podium-finish-lines/05.jpg" alt="Coastal Runners with medals" />
+            <img src="assets/gallery/podium-finish-lines/06.jpg" alt="D6 members after the race" />
+            <img src="assets/gallery/podium-finish-lines/07.jpg" alt="Finishers at the night run" />
+            <img src="assets/gallery/podium-finish-lines/08.jpg" alt="D6 members with medals at the marathon" />
+            <img src="assets/gallery/podium-finish-lines/09.jpg" alt="D6 members at the finish" />
+          </div>
+          <div class="g-shade"></div>
+          <div class="g-caption">
+            <span class="g-tag solid">PODIUM &amp; FINISH LINES</span>
+            <span class="g-title">MARATHONS &amp; RACES</span>
+            <span class="g-sub">Celebrating personal bests and first-time race completions as one community.</span>
+          </div>
+        </div>
+
+        <!-- Item 5: Instagram navigation card (no photos) -->
+        <div class="g-item featured">
+          <div class="g-top">
+            <span class="g-tag">INSTAGRAM SPOTLIGHT</span>
+            <span class="g-live"><i></i>LIVE REELS</span>
+          </div>
+          <div class="g-stack gap8">
+            <a class="g-title" href="https://www.instagram.com/d6_fitness_studio" target="_blank" rel="noopener" style="font-size:24px;letter-spacing:-0.6px;line-height:32px;">@D6_FITNESS_STUDIO</a>
+            <span class="g-sub">Watch daily training reels, PR celebrations, athlete stories, and raw behind-the-scenes community highlights from the Neelankarai floor.</span>
+          </div>
+          <a class="g-follow" href="https://www.instagram.com/d6_fitness_studio" target="_blank" rel="noopener">FOLLOW @D6_FITNESS_STUDIO</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CALL TO ACTION ============ -->
+  <section class="cta-final" id="book">
+    <div class="cta-final-inner">
+      <span class="eyebrow">TAKE THE FIRST STEP</span>
+      <h2>YOUR NEXT LEVEL STARTS<br />HERE.</h2>
+      <p class="lead">Every stronger version of you begins with one simple decision. Drop by our studio on East Coast Road or schedule an initial consultation today.</p>
+
+      <div class="cta-box">
+        <div class="cta-buttons">
+          <a class="cta-btn" href="tel:+919962811548">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            Call Head Coach
+          </a>
+          <a class="cta-btn primary" href="https://wa.me/919962811548" target="_blank" rel="noopener">WhatsApp Instant Chat</a>
+        </div>
+
+        <div class="cta-divider">
+          <div class="cta-address">
+            <span aria-hidden="true" style="color:var(--accent);font-size:16px;line-height:16px;">📍</span>
+            <div>
+              <strong>D6 Fitness Studio, Neelankarai</strong>
+              <span>2nd Cross Street, Singaravelan Salai, East Coast Road (ECR), Chinna Neelankarai, Chennai, Tamil Nadu 600115</span>
+            </div>
+          </div>
+          <div class="cta-chips">
+            <a class="cta-chip" href="https://www.google.com/maps/place/D6+Fitness+Studio/@12.953598,80.2575157,17z/data=!4m14!1m7!3m6!1s0x3a525d8bdea6dc45:0x4a16b71738f7b2f1!2sD6+Fitness+Studio!8m2!3d12.953598!4d80.2575157!16s%2Fg%2F11wwry9k4y!3m5!1s0x3a525d8bdea6dc45:0x4a16b71738f7b2f1!8m2!3d12.953598!4d80.2575157!16s%2Fg%2F11wwry9k4y?entry=ttu&amp;g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              View on Google Maps
+            </a>
+            <a class="cta-chip accent" href="https://www.instagram.com/d6_fitness_studio" target="_blank" rel="noopener">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+              Follow @d6_fitness_studio
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="contact">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/d6-logo.png" alt="D6 Fitness Studio" onerror="this.style.display='none'" />
+        <span class="tagline">BUILT BEYOND LIMITS • EST. 2018</span>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        <div class="footer-col">
+          <h4>NAVIGATION</h4>
+          <ul>
+            <li><a href="#programs">Programs &amp; Training</a></li>
+            <li><a href="#coach">Head Coach Dilip</a></li>
+            <li><a href="#gallery">Community Gallery</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>CONNECT</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/d6_fitness_studio" target="_blank" rel="noopener">@d6_fitness_studio</a></li>
+            <li><a href="mailto:d6fitnessstudio@gmail.com">d6fitnessstudio@gmail.com</a></li>
+            <li><a href="tel:+919962811548">+91-99628 11548</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="footer-social">
+        <p class="copyright">© 2018, D6 Fitness Studio.<br />All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ==== CONFIG: deployed Apps Script /exec URL ====
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkTUVkQluIXWtK7hsixEctMJ6Nvadq_UZ-MwVfykVoJc0IGnDKSWuxRVLkGqS88sZq/exec";
+
+    const form = document.getElementById("trialForm");
+    const nameInput = document.getElementById("name");
+    const phoneInput = document.getElementById("phone");
+    const submitBtn = document.getElementById("submitBtn");
+    const statusEl = document.getElementById("formStatus");
+
+    function setStatus(message, type) {
+      statusEl.textContent = message;
+      statusEl.className = "form-status " + (type || "");
+    }
+
+    function showSuccess() {
+      setStatus("Thanks! We'll contact you to book your trial session.", "ok");
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = "BOOK A TRIAL SESSION";
+    }
+
+    function showError() {
+      setStatus("Something went wrong. Please try again or WhatsApp the coach.", "err");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "BOOK A TRIAL SESSION";
+    }
+
+    // ==== TESTIMONIALS CAROUSEL ====
+    const testimonials = [
+      {
+        name: "Srinivasan Balasubramanian",
+        role: "Associate VP, Human Resources, Firstsource Solutions Ltd",
+        initials: "SB",
+        result: "105 KG → 82 KG | 23 KG LOST",
+        paragraphs: [
+          "My fitness journey with D6 Fitness Studio has been truly transformative. I've gone from 105 kg down to 82 kg, while significantly improving my strength and stability. Beyond the physical changes, it has completely transformed my lifestyle for the better. I am incredibly proud to be a D6 member and highly recommend it to anyone looking to make a positive change!"
+        ]
+      },
+      {
+        name: "Natasha",
+        role: "Model & Photographer",
+        initials: "NA",
+        paragraphs: [
+          "It’s been about 3 months since I started training at D6 and it’s been one of my most meaningful transformations of my life. I’ve been living with a medical condition and the training has made me stronger both mentally and physically.",
+          "One of the highlights has been becoming a runner. I never imagined that I would grow to love running, let alone start participating in marathons and it’s all thanks to Dilip’s motivation where he keeps encouraging us and telling us that we can do it",
+          "I’m incredibly happy to be part of this fitness journey and grateful to have a trainer who has helped me build strength, endurance, and confidence along the way."
+        ]
+      },
+      {
+        name: "Nishalya",
+        role: "Clinical psychologist",
+        initials: "NI",
+        paragraphs: [
+          "I started with doing 9 seconds of dead hang. Now I have progressed to 30+ seconds of dead hang, and I am able to do 12 scapula pull ups. In general, I can see that my strength has only improved after coming to D6. I have to give the credits to Dilip, for his support, training and encouragement in this process."
+        ]
+      },
+      {
+        name: "Jagannathan.D",
+        role: "Journalist",
+        initials: "JD",
+        paragraphs: [
+          "D6 Fitness Studio is not just a fitness studio; it is something entirely different from other gyms. I have been to several gyms, but I have never experienced training like the kind offered by Mr. Dilip, the owner and trainer of D6. He shapes and sculpts our bodies with the dedication and precision of a sculptor carefully carving a beautiful statue.",
+          "For me, D6 means good health, mental relaxation& two hours of happiness and laughter, enjoying the company of friends just like watching a Sundar C comedy movie!",
+          "My day feels complete and enjoyable only after visiting D6. It is a place where I have found wonderful friends, positive energy, and a sense of belonging.",
+          "In every sense, D6 is not just a gym; it is one big, happy family.",
+          "I warmly invite you to join our D6 family, take care of your physical health, and experience the happiness and positivity that come with being part of this wonderful community.",
+          "Come, be a part of D6, stay fit, stay healthy, and stay happy!"
+        ]
+      },
+      {
+        name: "Karthik Rajmohan",
+        role: "Managing director - Adwants communication Pvt Ltd",
+        initials: "KR",
+        paragraphs: [
+          "It’s been almost a year since I joined D6, and the biggest change for me has been finding the motivation to show up regularly. I was never someone who pushed myself to go to the gym, but Dilip’s encouragement and consistent follow-ups have made a real difference. He’s a wonderful coach who cares about your progress and keeps you going.",
+          "D6 is more than a fitness studio—it’s a community. I’ve made some wonderful friends here, and everyone motivates each other. The mix of HIIT, CrossFit and varied workouts keep things fun. And the fun goes beyond the workouts, with outings, shared meals and plenty of laughter. We eat together, then encourage each other to burn those calories too! :P",
+          "I’d recommend D6 to anyone looking for a place that makes staying active something to look forward to. Kudos to Dilip for building such a wonderful community where we work out, have fun and grow stronger together."
+        ]
+      },
+      {
+        name: "Christy Imaya Peter",
+        role: "Assistant Vice President, CitiCorp Services",
+        initials: "CP",
+        paragraphs: [
+          "Walking into D6 was one of the best decisions I made for myself. What started as a weight loss journey 5 months ago has turned into a something much more meaningful – a journey of discovering my own strength and challenging my limits and believing in myself.",
+          "Coach Dilip has incredible knowledge, passion and commitment are what truly set this studio apart. He genuinely cares about bringing out the best version of his clients. The energy he brings to the floor, his constant motivation and the standard he sets never allows you to settle for less.",
+          "From building strength and endurance, to finding the confidence to take my first 5k run and now chasing the 10K goal, every small milestone & victory is because of D6 & our coach.",
+          "And the best part is you never celebrate alone. There’s always a community cheering you on, pushing you forward and genuinely celebrating your progress. There is fun, laughter, positive energy, post work-out breaks, outings which creates an incredible sense of belonging that make you show up every day! And that’s the community Dilip has built!",
+          "With D6, it’s just not fitness, it’s my Journey of Believing in Myself!"
+        ]
+      },
+      {
+        name: "Sumita Gupta",
+        role: "Faculty, Alphabet International School",
+        initials: "SG",
+        title: "D6 - Where Fitness Meets Joy",
+        paragraphs: [
+          "I joined D6 on 6th June, and within just a few months, it has become much more than a fitness centre to me, it feels like home.",
+          "What sets D6 apart is its impeccable, clean and welcoming environment, but more importantly, its heart, Head Coach Dilip",
+          "Dilip is not just the owner; he is a coach who truly embodies what he teaches. His approach is exceptionally thoughtful, cautious and completely injury-free. He takes the time to understand your capacity and never rushes your progress. He builds you up, patiently and progressively.",
+          "I still remember, I was someone who couldn't jog even a kilometre. My first ever continuous run happened here, under his guidance. Today, I am comfortably running 10-12 km, and that transformation is entirely credited to his training philosophy.",
+          "Beyond the training, D6 has the most balanced and encouraging community. It's not just a gym where people work out in silos; it's a tribe where everyone knows, motivates and uplifts each other.",
+          "If you are looking for a place that values your well-being over numbers, D6 is it.",
+          "Truly, Fitness with Joy."
+        ]
+      },
+      {
+        name: "Arjunan",
+        role: "IT Professional",
+        initials: "AR",
+        paragraphs: [
+          "I’ve been working out at this studio gym for the past 7 months and have had a great experience. The gym is always neat, clean, and well-maintained, with a comfortable atmosphere for working out. The coach Dilip is knowledgeable, supportive, and gives personal attention, making it a great place to stay consistent with fitness! He tries to make workouts interesting by incorporating challenges every week and also helps with achieving any personal goals you might have like if it is related to preparing for a marathon or for any hybrid races like Hyrox. Would definitely recommend to folks in and around Neelankarai looking to be consistent with their fitness goals."
+        ]
+      }
+    ];
+
+    const tSlide = document.getElementById("tSlide");
+    const tDots = document.getElementById("tDots");
+    const tPrev = document.getElementById("tPrev");
+    const tNext = document.getElementById("tNext");
+    let tIndex = 0;
+
+    function pad2(n) { return String(n).padStart(2, "0"); }
+
+    function esc(text) {
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function renderTestimonial(index) {
+      const t = testimonials[index];
+      const total = testimonials.length;
+      const paras = t.paragraphs.map(function (p, i, arr) {
+        let text = esc(p);
+        if (i === 0) text = "&ldquo;" + text;
+        if (i === arr.length - 1) text = text + "&rdquo;";
+        return "<p>" + text + "</p>";
+      }).join("");
+
+      tSlide.classList.remove("fade");
+      void tSlide.offsetWidth; // restart animation
+      tSlide.classList.add("fade");
+
+      tSlide.innerHTML =
+        '<div class="slide-top">' +
+          (t.result ? '<span class="result-tag">' + esc(t.result) + '</span>' : '<span></span>') +
+          '<span class="counter">' + pad2(index + 1) + ' / ' + pad2(total) + '</span>' +
+        '</div>' +
+        (t.title ? '<div class="t-title">' + esc(t.title) + '</div>' : '') +
+        '<div class="quote-text">' + paras + '</div>' +
+        '<div class="author">' +
+          '<div class="avatar">' + esc(t.initials) + '</div>' +
+          '<div>' +
+            '<div class="name">' + esc(t.name) + '</div>' +
+            '<div class="role">' + esc(t.role) + '</div>' +
+          '</div>' +
+        '</div>';
+
+      tDots.innerHTML = "";
+      testimonials.forEach(function (_, i) {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.setAttribute("aria-label", "Show testimonial " + (i + 1));
+        if (i === index) dot.className = "active";
+        dot.addEventListener("click", function () { goTo(i); });
+        tDots.appendChild(dot);
+      });
+    }
+
+    function goTo(index) {
+      const total = testimonials.length;
+      tIndex = (index + total) % total;
+      renderTestimonial(tIndex);
+    }
+
+    tPrev.addEventListener("click", function () { goTo(tIndex - 1); });
+    tNext.addEventListener("click", function () { goTo(tIndex + 1); });
+
+    document.addEventListener("keydown", function (e) {
+      const el = document.getElementById("testimonials");
+      const inTestimonials = el.getBoundingClientRect().top < window.innerHeight &&
+                             el.getBoundingClientRect().bottom > 0;
+      if (!inTestimonials) return;
+      if (e.key === "ArrowLeft") goTo(tIndex - 1);
+      if (e.key === "ArrowRight") goTo(tIndex + 1);
+    });
+
+    renderTestimonial(0);
+
+    // ==== TOP NAVIGATION: mobile menu ====
+    (function () {
+      const toggle = document.getElementById("navToggle");
+      const links = document.getElementById("navLinks");
+      toggle.addEventListener("click", function () {
+        const open = links.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(open));
+      });
+      links.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          links.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    })();
+
+    // ==== GALLERY PHOTO SLIDESHOWS ====
+    document.querySelectorAll("[data-slideshow]").forEach(function (tile) {
+      const slides = tile.querySelectorAll(".g-slides img");
+      if (slides.length < 2) return;
+
+      let current = 0;
+      let timer = null;
+      const dotsWrap = document.createElement("div");
+      dotsWrap.className = "g-dots";
+      const dots = [];
+
+      slides.forEach(function (_, i) {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.setAttribute("aria-label", "Show photo " + (i + 1));
+        dot.addEventListener("click", function () { show(i); restart(); });
+        dotsWrap.appendChild(dot);
+        dots.push(dot);
+      });
+      tile.appendChild(dotsWrap);
+
+      function show(i) {
+        current = (i + slides.length) % slides.length;
+        slides.forEach(function (img, idx) { img.classList.toggle("active", idx === current); });
+        dots.forEach(function (d, idx) { d.classList.toggle("active", idx === current); });
+      }
+
+      function restart() {
+        clearInterval(timer);
+        timer = setInterval(function () { show(current + 1); }, 4500);
+      }
+
+      tile.addEventListener("mouseenter", function () { clearInterval(timer); });
+      tile.addEventListener("mouseleave", restart);
+
+      show(0);
+      restart();
+    });
+
+    // ==== TRIAL FORM -> Google Sheets (no-cors GET) ====
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = nameInput.value.trim();
+      const phone = phoneInput.value.trim();
+
+      if (!name || !phone) {
+        setStatus("Please enter your name and mobile number.", "err");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "SENDING...";
+      setStatus("", "");
+
+      const url = SCRIPT_URL + "?" + new URLSearchParams({ name: name, phone: phone });
+
+      fetch(url, { method: "GET", mode: "no-cors" })
+        .then(() => showSuccess())
+        .catch(() => showError());
+    });
+  </script>
+</body>
+</html>
