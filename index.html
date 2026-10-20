@@ -79,6 +79,8 @@
     }
     .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
     .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .btn-static { pointer-events: none; cursor: default; }
+    .btn-static:hover { transform: none; filter: none; }
 
     /* ---------- HERO ---------- */
     .hero {
@@ -755,7 +757,7 @@
       background: linear-gradient(0deg, rgba(17, 19, 21, 0.92) 0%, rgba(17, 19, 21, 0.45) 45%, rgba(17, 19, 21, 0.25) 100%);
       pointer-events: none;
     }
-    .g-item > *:not(.g-slides):not(.g-shade):not(.g-dots) { position: relative; z-index: 2; }
+    .g-item > *:not(.g-slides):not(.g-shade):not(.g-dots):not(.g-caption) { position: relative; z-index: 2; }
     .g-top { display: flex; align-items: center; justify-content: space-between; }
     .g-foot {
       border-top: 1px solid var(--border);
@@ -1109,7 +1111,7 @@
         </div>
 
         <div class="hero-actions">
-          <a class="btn" href="#programs">START YOUR JOURNEY <span aria-hidden="true">→</span></a>
+          <span class="btn btn-static" aria-disabled="true">START YOUR JOURNEY <span aria-hidden="true">→</span></span>
         </div>
       </div>
     </div>
@@ -1341,12 +1343,7 @@
       <div class="gallery-grid">
         <!-- Item 1: photo slideshow -->
         <div class="g-item slide" data-slideshow>
-          <div class="g-slides">
-            <img class="active" src="assets/gallery/conditioning-floor/01.jpg" alt="Neelankarai studio floor" />
-            <img src="assets/gallery/conditioning-floor/02.jpg" alt="Neelankarai studio floor" />
-            <img src="assets/gallery/conditioning-floor/03.jpg" alt="Neelankarai studio floor" />
-            <img src="assets/gallery/conditioning-floor/04.jpg" alt="Neelankarai studio floor" />
-          </div>
+                              <div class="g-slides" data-folder="conditioning-floor"></div>
           <div class="g-shade"></div>
           <div class="g-caption">
             <span class="g-tag solid" style="width:max-content;">CONDITIONING FLOOR</span>
@@ -1357,11 +1354,7 @@
 
         <!-- Item 2: HYROX photo slideshow -->
         <div class="g-item slide" data-slideshow>
-          <div class="g-slides">
-            <img class="active" src="assets/gallery/hyrox-hybrid-arena/01.jpg" alt="Athlete training at the HYROX arena" />
-            <img src="assets/gallery/hyrox-hybrid-arena/02.jpg" alt="HYROX arena" />
-            <img src="assets/gallery/hyrox-hybrid-arena/03.jpg" alt="HYFIT Games leaderboard" />
-          </div>
+                              <div class="g-slides" data-folder="hyrox-hybrid-arena"></div>
           <div class="g-shade"></div>
           <div class="g-caption">
             <span class="g-tag solid">HYROX &amp; HYBRID ARENA</span>
@@ -1372,20 +1365,10 @@
 
         <!-- Item 3: Community photo slideshow -->
         <div class="g-item slide" data-slideshow>
-          <div class="g-slides">
-            <img class="active" src="assets/gallery/endurance-track/01.jpg" alt="Runner on the track" />
-            <img src="assets/gallery/endurance-track/02.jpg" alt="D6 members with medals" />
-            <img src="assets/gallery/endurance-track/03.jpg" alt="Runners on the road" />
-            <img src="assets/gallery/endurance-track/04.jpg" alt="D6 members on the course" />
-            <img src="assets/gallery/endurance-track/05.jpg" alt="D6 squad with banner" />
-            <img src="assets/gallery/endurance-track/06.jpg" alt="D6 squad together" />
-            <img src="assets/gallery/endurance-track/07.jpg" alt="D6 members at the night run" />
-            <img src="assets/gallery/endurance-track/08.jpg" alt="D6 members at the studio" />
-            <img src="assets/gallery/endurance-track/09.jpg" alt="D6 community on the green turf" />
-          </div>
+                              <div class="g-slides" data-folder="endurance-track"></div>
           <div class="g-shade"></div>
           <div class="g-caption">
-            <span class="g-tag solid">ENDURANCE &amp; TRACK</span>
+            <span class="g-tag solid">THE SQUAD</span>
             <span class="g-title">D6 COMMUNITY</span>
             <span class="g-sub">Pictures of a community that laughs and encourages together as one big happy family — celebration events, race finish lines, and shared milestones.</span>
           </div>
@@ -1393,17 +1376,7 @@
 
         <!-- Item 4: Podium photo slideshow -->
         <div class="g-item slide" data-slideshow>
-          <div class="g-slides">
-            <img class="active" src="assets/gallery/podium-finish-lines/01.jpg" alt="Finish line celebration" />
-            <img src="assets/gallery/podium-finish-lines/02.jpg" alt="D6 members at the race" />
-            <img src="assets/gallery/podium-finish-lines/03.jpg" alt="Athlete resting after the half marathon" />
-            <img src="assets/gallery/podium-finish-lines/04.jpg" alt="Runners with medals" />
-            <img src="assets/gallery/podium-finish-lines/05.jpg" alt="Coastal Runners with medals" />
-            <img src="assets/gallery/podium-finish-lines/06.jpg" alt="D6 members after the race" />
-            <img src="assets/gallery/podium-finish-lines/07.jpg" alt="Finishers at the night run" />
-            <img src="assets/gallery/podium-finish-lines/08.jpg" alt="D6 members with medals at the marathon" />
-            <img src="assets/gallery/podium-finish-lines/09.jpg" alt="D6 members at the finish" />
-          </div>
+                              <div class="g-slides" data-folder="podium-finish-lines"></div>
           <div class="g-shade"></div>
           <div class="g-caption">
             <span class="g-tag solid">PODIUM &amp; FINISH LINES</span>
@@ -1480,7 +1453,7 @@
           <h4>NAVIGATION</h4>
           <ul>
             <li><a href="#programs">Programs &amp; Training</a></li>
-            <li><a href="#coach">Head Coach Dilip</a></li>
+            <li><a href="#coach">Head Coach</a></li>
             <li><a href="#gallery">Community Gallery</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
           </ul>
@@ -1501,6 +1474,8 @@
     </div>
   </footer>
 
+  <script src="assets/gallery/gallery-manifest.js"></script>
+  <script src="content/testimonials.js"></script>
   <script>
     // ==== CONFIG: deployed Apps Script /exec URL ====
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkTUVkQluIXWtK7hsixEctMJ6Nvadq_UZ-MwVfykVoJc0IGnDKSWuxRVLkGqS88sZq/exec";
@@ -1530,93 +1505,8 @@
     }
 
     // ==== TESTIMONIALS CAROUSEL ====
-    const testimonials = [
-      {
-        name: "Srinivasan Balasubramanian",
-        role: "Associate VP, Human Resources, Firstsource Solutions Ltd",
-        initials: "SB",
-        result: "105 KG → 82 KG | 23 KG LOST",
-        paragraphs: [
-          "My fitness journey with D6 Fitness Studio has been truly transformative. I've gone from 105 kg down to 82 kg, while significantly improving my strength and stability. Beyond the physical changes, it has completely transformed my lifestyle for the better. I am incredibly proud to be a D6 member and highly recommend it to anyone looking to make a positive change!"
-        ]
-      },
-      {
-        name: "Natasha",
-        role: "Model & Photographer",
-        initials: "NA",
-        paragraphs: [
-          "It’s been about 3 months since I started training at D6 and it’s been one of my most meaningful transformations of my life. I’ve been living with a medical condition and the training has made me stronger both mentally and physically.",
-          "One of the highlights has been becoming a runner. I never imagined that I would grow to love running, let alone start participating in marathons and it’s all thanks to Dilip’s motivation where he keeps encouraging us and telling us that we can do it",
-          "I’m incredibly happy to be part of this fitness journey and grateful to have a trainer who has helped me build strength, endurance, and confidence along the way."
-        ]
-      },
-      {
-        name: "Nishalya",
-        role: "Clinical psychologist",
-        initials: "NI",
-        paragraphs: [
-          "I started with doing 9 seconds of dead hang. Now I have progressed to 30+ seconds of dead hang, and I am able to do 12 scapula pull ups. In general, I can see that my strength has only improved after coming to D6. I have to give the credits to Dilip, for his support, training and encouragement in this process."
-        ]
-      },
-      {
-        name: "Jagannathan.D",
-        role: "Journalist",
-        initials: "JD",
-        paragraphs: [
-          "D6 Fitness Studio is not just a fitness studio; it is something entirely different from other gyms. I have been to several gyms, but I have never experienced training like the kind offered by Mr. Dilip, the owner and trainer of D6. He shapes and sculpts our bodies with the dedication and precision of a sculptor carefully carving a beautiful statue.",
-          "For me, D6 means good health, mental relaxation& two hours of happiness and laughter, enjoying the company of friends just like watching a Sundar C comedy movie!",
-          "My day feels complete and enjoyable only after visiting D6. It is a place where I have found wonderful friends, positive energy, and a sense of belonging.",
-          "In every sense, D6 is not just a gym; it is one big, happy family.",
-          "I warmly invite you to join our D6 family, take care of your physical health, and experience the happiness and positivity that come with being part of this wonderful community.",
-          "Come, be a part of D6, stay fit, stay healthy, and stay happy!"
-        ]
-      },
-      {
-        name: "Karthik Rajmohan",
-        role: "Managing director - Adwants communication Pvt Ltd",
-        initials: "KR",
-        paragraphs: [
-          "It’s been almost a year since I joined D6, and the biggest change for me has been finding the motivation to show up regularly. I was never someone who pushed myself to go to the gym, but Dilip’s encouragement and consistent follow-ups have made a real difference. He’s a wonderful coach who cares about your progress and keeps you going.",
-          "D6 is more than a fitness studio—it’s a community. I’ve made some wonderful friends here, and everyone motivates each other. The mix of HIIT, CrossFit and varied workouts keep things fun. And the fun goes beyond the workouts, with outings, shared meals and plenty of laughter. We eat together, then encourage each other to burn those calories too! :P",
-          "I’d recommend D6 to anyone looking for a place that makes staying active something to look forward to. Kudos to Dilip for building such a wonderful community where we work out, have fun and grow stronger together."
-        ]
-      },
-      {
-        name: "Christy Imaya Peter",
-        role: "Assistant Vice President, CitiCorp Services",
-        initials: "CP",
-        paragraphs: [
-          "Walking into D6 was one of the best decisions I made for myself. What started as a weight loss journey 5 months ago has turned into a something much more meaningful – a journey of discovering my own strength and challenging my limits and believing in myself.",
-          "Coach Dilip has incredible knowledge, passion and commitment are what truly set this studio apart. He genuinely cares about bringing out the best version of his clients. The energy he brings to the floor, his constant motivation and the standard he sets never allows you to settle for less.",
-          "From building strength and endurance, to finding the confidence to take my first 5k run and now chasing the 10K goal, every small milestone & victory is because of D6 & our coach.",
-          "And the best part is you never celebrate alone. There’s always a community cheering you on, pushing you forward and genuinely celebrating your progress. There is fun, laughter, positive energy, post work-out breaks, outings which creates an incredible sense of belonging that make you show up every day! And that’s the community Dilip has built!",
-          "With D6, it’s just not fitness, it’s my Journey of Believing in Myself!"
-        ]
-      },
-      {
-        name: "Sumita Gupta",
-        role: "Faculty, Alphabet International School",
-        initials: "SG",
-        title: "D6 - Where Fitness Meets Joy",
-        paragraphs: [
-          "I joined D6 on 6th June, and within just a few months, it has become much more than a fitness centre to me, it feels like home.",
-          "What sets D6 apart is its impeccable, clean and welcoming environment, but more importantly, its heart, Head Coach Dilip",
-          "Dilip is not just the owner; he is a coach who truly embodies what he teaches. His approach is exceptionally thoughtful, cautious and completely injury-free. He takes the time to understand your capacity and never rushes your progress. He builds you up, patiently and progressively.",
-          "I still remember, I was someone who couldn't jog even a kilometre. My first ever continuous run happened here, under his guidance. Today, I am comfortably running 10-12 km, and that transformation is entirely credited to his training philosophy.",
-          "Beyond the training, D6 has the most balanced and encouraging community. It's not just a gym where people work out in silos; it's a tribe where everyone knows, motivates and uplifts each other.",
-          "If you are looking for a place that values your well-being over numbers, D6 is it.",
-          "Truly, Fitness with Joy."
-        ]
-      },
-      {
-        name: "Arjunan",
-        role: "IT Professional",
-        initials: "AR",
-        paragraphs: [
-          "I’ve been working out at this studio gym for the past 7 months and have had a great experience. The gym is always neat, clean, and well-maintained, with a comfortable atmosphere for working out. The coach Dilip is knowledgeable, supportive, and gives personal attention, making it a great place to stay consistent with fitness! He tries to make workouts interesting by incorporating challenges every week and also helps with achieving any personal goals you might have like if it is related to preparing for a marathon or for any hybrid races like Hyrox. Would definitely recommend to folks in and around Neelankarai looking to be consistent with their fitness goals."
-        ]
-      }
-    ];
+    // Testimonials are read from content/testimonials.json (via update_content.py)
+    const testimonials = window.D6_TESTIMONIALS || [];
 
     const tSlide = document.getElementById("tSlide");
     const tDots = document.getElementById("tDots");
@@ -1635,6 +1525,7 @@
     }
 
     function renderTestimonial(index) {
+      if (!testimonials.length) return;
       const t = testimonials[index];
       const total = testimonials.length;
       const paras = t.paragraphs.map(function (p, i, arr) {
@@ -1659,7 +1550,7 @@
           '<div class="avatar">' + esc(t.initials) + '</div>' +
           '<div>' +
             '<div class="name">' + esc(t.name) + '</div>' +
-            '<div class="role">' + esc(t.role) + '</div>' +
+            (t.role ? '<div class="role">' + esc(t.role) + '</div>' : '') +
           '</div>' +
         '</div>';
 
@@ -1709,6 +1600,14 @@
         });
       });
     })();
+
+    // ==== GALLERY: fill each tile from its folder (see assets/gallery/gallery-manifest.js) ====
+    document.querySelectorAll(".g-slides[data-folder]").forEach(function (box) {
+      const files = (window.D6_GALLERY || {})[box.dataset.folder] || [];
+      box.innerHTML = files.map(function (src, i) {
+        return '<img' + (i === 0 ? ' class="active"' : '') + ' src="' + src + '" alt="D6 Fitness Studio gallery photo" />';
+      }).join("");
+    });
 
     // ==== GALLERY PHOTO SLIDESHOWS ====
     document.querySelectorAll("[data-slideshow]").forEach(function (tile) {
