@@ -17,11 +17,9 @@ window.D6_GALLERY = {
   "hyrox-hybrid-arena": [
     "assets/gallery/hyrox-hybrid-arena/01.jpg",
     "assets/gallery/hyrox-hybrid-arena/02.jpg",
-    "assets/gallery/hyrox-hybrid-arena/03.jpg",
     "assets/gallery/hyrox-hybrid-arena/04.jpg",
     "assets/gallery/hyrox-hybrid-arena/05.jpg",
     "assets/gallery/hyrox-hybrid-arena/06.jpg",
-    "assets/gallery/hyrox-hybrid-arena/07.jpg",
     "assets/gallery/hyrox-hybrid-arena/08.jpg"
   ],
   "podium-finish-lines": [
@@ -35,6 +33,9 @@ window.D6_GALLERY = {
     "assets/gallery/podium-finish-lines/08.jpg",
     "assets/gallery/podium-finish-lines/09.jpg",
     "assets/gallery/podium-finish-lines/10.jpg",
-    "assets/gallery/podium-finish-lines/11.jpg"
+    "assets/gallery/podium-finish-lines/11.jpg",
+    "assets/gallery/podium-finish-lines/Christy.jpg",
+    "assets/gallery/podium-finish-lines/Srini Runner.jpg",
+    "assets/gallery/podium-finish-lines/Sumita.jpg"
   ]
 };
