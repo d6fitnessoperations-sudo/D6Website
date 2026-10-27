@@ -79,8 +79,6 @@
     }
     .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
     .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-    .btn-static { pointer-events: none; cursor: default; }
-    .btn-static:hover { transform: none; filter: none; }
 
     /* ---------- HERO ---------- */
     .hero {
@@ -1051,6 +1049,49 @@
       .hero-actions .btn { width: 100%; }
       .gallery-grid { grid-auto-rows: 288px; }
     }
+
+    /* ---------- PHONE LAYOUT FIXES ---------- */
+    @media (max-width: 768px) {
+      .coach-grid { grid-template-columns: minmax(0, 1fr); }
+      .coach-photo, .coach-text { grid-column: 1 / -1; min-width: 0; }
+      .coach-photo .frame { height: 440px; }
+      .coach-text { gap: 20px; }
+      .achieve-row { flex-direction: column; }
+      .achieve { flex: none; min-width: 0; width: 100%; }
+      .achieve .t { font-size: 14px; line-height: 20px; }
+      .achieve .d { font-size: 13px; line-height: 18px; }
+      .race { font-size: 13px; line-height: 18px; }
+      .sub-head .label { font-size: 11px; white-space: normal; }
+      .badge-signature { font-size: 11px; padding: 5px 12px; }
+      .result-tag { font-size: 12px; }
+      .g-tag, .g-tag.solid { font-size: 11px; }
+      .g-sub { font-size: 13px; line-height: 20px; }
+      .card p, .pillar p { font-size: 15px; line-height: 24px; }
+      .card .tag, .pillar .num { font-size: 13px; }
+      .section-head .intro, .community-head p, .t-head .sub { font-size: 15px; line-height: 24px; }
+      .hero-lead { font-size: 16px; line-height: 26px; }
+      .pill { font-size: 13px; }
+      .cta-final .lead { font-size: 16px; line-height: 26px; }
+      .cta-address span { font-size: 13px; line-height: 19px; }
+      .cta-address strong { font-size: 13px; line-height: 19px; }
+      .cta-chip { font-size: 13px; white-space: normal; }
+      .cta-btn { font-size: 15px; }
+      .footer-col li, .footer-col a { font-size: 14px; }
+      .copyright { font-size: 13px; }
+      .footer-grid { grid-template-columns: minmax(0, 1fr); }
+      .footer-brand, .footer-nav, .footer-social { grid-column: 1 / -1; min-width: 0; }
+      .footer-col { min-width: 0; }
+      .footer-col li, .footer-col a { overflow-wrap: anywhere; }
+      .car-btn { top: calc(100% + 12px); transform: none; }
+      .car-btn.prev { left: calc(50% - 56px); right: auto; }
+      .car-btn.next { left: calc(50% + 12px); right: auto; }
+      .dots { padding-top: 84px; }
+    }
+    @media (max-width: 480px) {
+      .h2 { font-size: 30px; line-height: 1.15; }
+      .hero h1 { font-size: 36px; line-height: 1.08; }
+      .coach-caption .name { font-size: 22px; }
+    }
   </style>
 </head>
 <body>
@@ -1111,7 +1152,7 @@
         </div>
 
         <div class="hero-actions">
-          <span class="btn btn-static" aria-disabled="true">START YOUR JOURNEY <span aria-hidden="true">→</span></span>
+          <a class="btn" href="#book">START YOUR JOURNEY <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
