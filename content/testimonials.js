@@ -100,5 +100,15 @@ window.D6_TESTIMONIALS = [
     "paragraphs": [
       "I highly recommend people around Neelankarai to join D6 for your fitness journey"
     ]
+  },
+  {
+    "name": "Gopal V.M.K",
+    "role": "Director, ITechnowiz Solutions Pvt Ltd",
+    "initials": "GV",
+    "paragraphs": [
+      "Joining D6 has been a paradigm shift in how I set and achieve my health goals. Coach Dilip has built an excellent setup with the right tools and a no-nonsense yet never strenuous exercise regime, personalized for each individual.",
+      "I turned 50 a couple of years ago and began noticing muscle weakness, so I decided to address it with strength training. I had never set foot in a gym before joining D6 two months ago. Coach Dilip eased me into the routines gradually and made sure I stayed injury-free. Today I feel more energetic, I can perform my routines with confidence, and I've shed a few pounds along the way. I hope to keep this going for many years to come. Thank you, Coach!",
+      "D6 is special not only because of the coach but also because of the fellow members, who make it such an enjoyable place to be. It's the reason I look forward to coming to the gym regularly."
+    ]
   }
 ];
