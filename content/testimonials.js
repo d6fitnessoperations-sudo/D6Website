@@ -98,7 +98,11 @@ window.D6_TESTIMONIALS = [
     "role": "Architect",
     "initials": "V",
     "paragraphs": [
-      "I highly recommend people around Neelankarai to join D6 for your fitness journey"
+      "Honestly, D6 is not just a gym for me; it’s a fitness community! 💪❤️",
+      "From fitness training and HYROX to running with our running coach, we’re constantly learning, improving, and pushing ourselves every day.",
+      "And Mr. Dileep is more like a brother to me. I’ve been travelling with him since 2008, and it’s been an amazing journey together.",
+      "I always feel that a gym is not just about having the latest machines or equipment. What really matters is how well your trainer understands your body, knows your strengths and limitations, and trains you accordingly with personalised workouts. That’s where D6 really stands out!",
+      "I can proudly recommend D6 over any other gym because here, we don’t just work out; we learn, challenge ourselves, have fun, and grow stronger together every single day"
     ]
   },
   {
