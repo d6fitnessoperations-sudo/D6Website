@@ -1092,6 +1092,62 @@
       .hero h1 { font-size: 36px; line-height: 1.08; }
       .coach-caption .name { font-size: 22px; }
     }
+
+    /* ---------- CERTIFICATIONS SLIDER ---------- */
+    .certs { background: var(--surface); border-top: 1px solid var(--border-soft); padding: 96px 0; }
+    .certs-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; margin-bottom: 48px; }
+    .certs-head p { color: var(--muted); font-size: 16px; line-height: 24px; max-width: 576px; }
+    .certs-slider { position: relative; }
+    .certs-viewport { overflow: hidden; border-radius: 16px; }
+    .certs-track { display: flex; gap: 24px; transition: transform 0.5s ease; }
+    .cert-card {
+      flex: 0 0 calc((100% - 2 * 24px) / 3);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 16px 20px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .cert-card button.cert-open {
+      all: unset; cursor: zoom-in; display: block; border-radius: 10px; overflow: hidden;
+      border: 1px solid var(--border-soft);
+    }
+    .cert-card img { width: 100%; height: auto; display: block; }
+    .cert-card .cert-course {
+      color: var(--accent); font-size: 14px; font-weight: 800; letter-spacing: 0.6px;
+      text-transform: uppercase; line-height: 20px;
+    }
+    .cert-card .cert-issuer { color: var(--muted); font-size: 13px; line-height: 18px; }
+    .certs-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 32px; }
+    .certs-nav .car-btn { position: static; transform: none; }
+    .certs-dots { display: flex; gap: 10px; }
+    .certs-dots button {
+      width: 8px; height: 8px; padding: 0; border: 0; border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.2); cursor: pointer;
+      transition: width 0.25s ease, background 0.25s ease;
+    }
+    .certs-dots button.active { width: 32px; background: var(--accent); }
+    .cert-lightbox {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0, 0, 0, 0.9);
+      display: none; align-items: center; justify-content: center; padding: 24px;
+    }
+    .cert-lightbox.open { display: flex; }
+    .cert-lightbox img { max-width: 100%; max-height: 90vh; border-radius: 12px; }
+    .cert-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 44px; height: 44px; border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff; font-size: 24px; line-height: 1; cursor: pointer;
+    }
+    @media (max-width: 1100px) {
+      .cert-card { flex-basis: calc((100% - 24px) / 2); }
+    }
+    @media (max-width: 768px) {
+      .certs { padding: 64px 0; }
+      .cert-card { flex-basis: 100%; }
+      .certs-track { gap: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -1306,6 +1362,37 @@
     </div>
   </section>
 
+  <!-- ============ CERTIFICATIONS (dynamic from content/certifications.json) ============ -->
+  <section class="certs" id="certifications">
+    <div class="container">
+      <div class="certs-head">
+        <span class="eyebrow">CREDENTIALS</span>
+        <h2 class="h2">CERTIFIED EXPERTISE</h2>
+        <p>Recognised qualifications behind Coach Dilip's training approach.</p>
+      </div>
+
+      <div class="certs-slider" id="certsSlider">
+        <div class="certs-viewport">
+          <div class="certs-track" id="certsTrack"></div>
+        </div>
+        <div class="certs-nav">
+          <button class="car-btn" id="certPrev" type="button" aria-label="Previous certificate">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div class="certs-dots" id="certDots"></div>
+          <button class="car-btn" id="certNext" type="button" aria-label="Next certificate">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cert-lightbox" id="certLightbox" role="dialog" aria-modal="true" aria-label="Certificate">
+    <button class="cert-close" id="certClose" type="button" aria-label="Close">&times;</button>
+    <img id="certLightboxImg" src="" alt="" />
+  </div>
+
   <!-- ============ COMMUNITY ============ -->
   <section class="community" id="community">
     <div class="container">
@@ -1517,6 +1604,7 @@
 
   <script src="assets/gallery/gallery-manifest.js"></script>
   <script src="content/testimonials.js"></script>
+  <script src="content/certifications.js"></script>
   <script>
     // ==== CONFIG: deployed Apps Script /exec URL ====
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkTUVkQluIXWtK7hsixEctMJ6Nvadq_UZ-MwVfykVoJc0IGnDKSWuxRVLkGqS88sZq/exec";
@@ -1625,6 +1713,91 @@
     });
 
     renderTestimonial(0);
+
+
+    // ==== CERTIFICATIONS SLIDER (data from content/certifications.js) ====
+    (function () {
+      const items = window.D6_CERTIFICATIONS || [];
+      const track = document.getElementById("certsTrack");
+      const dotsWrap = document.getElementById("certDots");
+      const prev = document.getElementById("certPrev");
+      const next = document.getElementById("certNext");
+      const lightbox = document.getElementById("certLightbox");
+      const lbImg = document.getElementById("certLightboxImg");
+      const lbClose = document.getElementById("certClose");
+      let index = 0;
+
+      if (!items.length) {
+        document.getElementById("certifications").style.display = "none";
+        return;
+      }
+
+      items.forEach(function (c) {
+        const card = document.createElement("article");
+        card.className = "cert-card";
+        card.innerHTML =
+          '<button class="cert-open" type="button" aria-label="View ' + c.title.replace(/"/g, "&quot;") + '">' +
+            '<img src="' + c.file + '" alt="' + c.title.replace(/"/g, "&quot;") + '" loading="lazy" />' +
+          '</button>' +
+          '<div class="cert-course"></div>';
+        card.querySelector(".cert-course").textContent = c.title;
+        card.querySelector(".cert-open").addEventListener("click", function () {
+          lbImg.src = c.file;
+          lbImg.alt = c.title;
+          lightbox.classList.add("open");
+        });
+        track.appendChild(card);
+      });
+
+      function perView() {
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1100) return 2;
+        return 3;
+      }
+
+      function maxIndex() { return Math.max(0, items.length - perView()); }
+
+      function stepWidth() {
+        const cards = track.children;
+        if (cards.length < 2) return 0;
+        return cards[1].offsetLeft - cards[0].offsetLeft;
+      }
+
+      function render() {
+        const max = maxIndex();
+        if (index > max) index = max;
+        track.style.transform = "translateX(" + (-index * stepWidth()) + "px)";
+        document.querySelector("#certifications .certs-nav").style.display = max === 0 ? "none" : "flex";
+        prev.disabled = index === 0;
+        next.disabled = index >= max;
+        prev.style.opacity = prev.disabled ? "0.4" : "1";
+        next.style.opacity = next.disabled ? "0.4" : "1";
+
+        dotsWrap.innerHTML = "";
+        for (let i = 0; i <= max; i++) {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.setAttribute("aria-label", "Show certificate set " + (i + 1));
+          if (i === index) dot.className = "active";
+          dot.addEventListener("click", function () { index = i; render(); });
+          dotsWrap.appendChild(dot);
+        }
+      }
+
+      prev.addEventListener("click", function () { index = Math.max(0, index - 1); render(); });
+      next.addEventListener("click", function () { index = Math.min(maxIndex(), index + 1); render(); });
+      window.addEventListener("resize", render);
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        lbImg.src = "";
+      }
+      lbClose.addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", function (e) { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLightbox(); });
+
+      render();
+    })();
 
     // ==== TOP NAVIGATION: mobile menu ====
     (function () {
