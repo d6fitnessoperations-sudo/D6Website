@@ -1,0 +1,19 @@
+{
+  "certifications": [
+    {
+      "file": "assets/certifications/certified-personal-trainer.jpg",
+      "title": "Certified Personal Trainer",
+      "issuer": "UNSCHOOL"
+    },
+    {
+      "file": "assets/certifications/strength-conditioning.jpg",
+      "title": "Certificate in Strength and Conditioning",
+      "issuer": "UNSCHOOL"
+    },
+    {
+      "file": "assets/certifications/sports-fitness-nutrition.jpg",
+      "title": "Certificate in Sports and Fitness Nutrition",
+     "issuer": "UNSCHOOL"
+    }
+  ]
+}
