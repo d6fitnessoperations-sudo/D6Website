@@ -190,7 +190,7 @@
       -webkit-backdrop-filter: blur(2px);
       white-space: nowrap;
     }
-    .hero-actions { padding-top: 16px; }
+    .hero-actions { padding-top: 16px; display: flex; flex-wrap: wrap; gap: 12px; }
 
     /* ---------- CORE PROGRAMS ---------- */
     .section {
@@ -1112,7 +1112,7 @@
       all: unset; cursor: zoom-in; display: block; border-radius: 10px; overflow: hidden;
       border: 1px solid var(--border-soft);
     }
-    .cert-card img { width: 100%; height: auto; display: block; }
+    .cert-card img { width: 100%; height: auto; display: block; aspect-ratio: 1239 / 1754; object-fit: contain; background: var(--surface-2); }
     .cert-card .cert-course {
       color: var(--accent); font-size: 14px; font-weight: 800; letter-spacing: 0.6px;
       text-transform: uppercase; line-height: 20px;
@@ -1147,6 +1147,186 @@
       .certs { padding: 64px 0; }
       .cert-card { flex-basis: 100%; }
       .certs-track { gap: 16px; }
+    }
+    /* ---------- HEALTH & FITNESS ASSESSMENT ---------- */
+    .btn-ghost {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      box-shadow: none;
+    }
+    .btn-ghost:hover { background: rgba(245, 166, 35, 0.08); }
+    .btn-link {
+      background: none;
+      border: 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 12px 8px;
+    }
+    .btn-link:hover { color: var(--text); }
+    .assess-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.75);
+      display: flex;
+      overflow-y: auto;
+      padding: 16px;
+    }
+    .assess-modal[hidden] { display: none; }
+    .assess-card {
+      position: relative;
+      margin: auto;
+      width: 100%;
+      max-width: 640px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+    }
+    .assess-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: 0;
+      color: var(--muted);
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    .assess-close:hover { color: var(--text); }
+    .assess-eyebrow {
+      display: block;
+      color: var(--accent);
+      font-family: 'Liberation Mono', ui-monospace, monospace;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .assess-card h3 {
+      font-size: 26px;
+      line-height: 1.2;
+      font-weight: 800;
+      margin: 10px 36px 12px 0;
+    }
+    .assess-card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+    .assess-progress {
+      height: 6px;
+      background: var(--surface-2);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 16px 0 4px;
+    }
+    .assess-progress span { display: block; height: 100%; background: var(--accent); transition: width 0.3s ease; }
+    .assess-opts { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+    .assess-opt {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .assess-opt:hover { border-color: rgba(245, 166, 35, 0.5); }
+    .assess-opt.selected { border-color: var(--accent); }
+    .assess-opt input { accent-color: var(--accent); width: 18px; height: 18px; flex-shrink: 0; }
+    .assess-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .assess-actions .btn { padding: 14px 24px; }
+    .assess-warn { color: #ff6b6b; font-size: 14px; min-height: 20px; margin-top: 12px; }
+    .assess-review { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+    .assess-review li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--bg);
+    }
+    .assess-review .q { font-size: 13px; color: var(--muted); }
+    .assess-review .a { font-size: 14px; font-weight: 600; margin-top: 4px; color: var(--text); }
+    .assess-review li button {
+      background: none;
+      border: 0;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .assess-score { display: flex; align-items: baseline; gap: 8px; margin-top: 14px; }
+    .assess-score .big { font-size: 72px; font-weight: 800; line-height: 1; color: var(--accent); }
+    .assess-score .of { color: var(--muted); font-size: 20px; }
+    .assess-stage {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(245, 166, 35, 0.12);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+    .assess-fields { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
+    .assess-notice { text-align: center; font-size: 13px; line-height: 1.5; margin: 16px 0 12px; }
+    .assess-cat { padding: 14px 0; border-top: 1px solid var(--border); }
+    .assess-cat-head { display: flex; justify-content: space-between; gap: 12px; font-weight: 700; font-size: 15px; color: var(--text); }
+    .assess-bar { height: 8px; background: var(--surface-2); border-radius: 999px; overflow: hidden; margin: 10px 0 8px; }
+    .assess-bar span { display: block; height: 100%; background: var(--accent); }
+    .assess-band {
+      font-family: 'Liberation Mono', ui-monospace, monospace;
+      font-size: 12px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .assess-focus {
+      border-left: 4px solid var(--accent);
+      background: var(--bg);
+      padding: 12px 14px;
+      border-radius: 10px;
+      margin-top: 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text) !important;
+    }
+    .assess-talk { text-align: center; margin-top: 14px; }
+    .assess-talk a { color: var(--accent); font-weight: 700; font-size: 14px; }
+    @media (max-width: 480px) {
+      .assess-modal { padding: 12px; }
+      .assess-card { padding: 22px 18px; border-radius: 16px; }
+      .assess-card h3 { font-size: 22px; }
+      .assess-score .big { font-size: 60px; }
+      .assess-actions .btn { width: 100%; }
+      .assess-actions { flex-direction: column-reverse; align-items: stretch; }
+      .assess-actions .btn-link { text-align: center; }
     }
   </style>
 </head>
@@ -1209,6 +1389,7 @@
 
         <div class="hero-actions">
           <a class="btn" href="#book">START YOUR JOURNEY <span aria-hidden="true">→</span></a>
+          <button class="btn btn-ghost" type="button" id="assessOpen">TAKE THE FITNESS ASSESSMENT</button>
         </div>
       </div>
     </div>
@@ -1602,9 +1783,17 @@
     </div>
   </footer>
 
+  <div class="assess-modal" id="assessModal" role="dialog" aria-modal="true" aria-label="Health and fitness assessment" hidden>
+    <div class="assess-card">
+      <button type="button" class="assess-close" id="assessClose" aria-label="Close assessment">&times;</button>
+      <div id="assessBody"></div>
+    </div>
+  </div>
+
   <script src="assets/gallery/gallery-manifest.js"></script>
   <script src="content/testimonials.js"></script>
   <script src="content/certifications.js"></script>
+  <script src="content/assessment.js"></script>
   <script>
     // ==== CONFIG: deployed Apps Script /exec URL ====
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkTUVkQluIXWtK7hsixEctMJ6Nvadq_UZ-MwVfykVoJc0IGnDKSWuxRVLkGqS88sZq/exec";
@@ -1884,6 +2073,332 @@
         .then(() => showSuccess())
         .catch(() => showError());
     });
+    // ==== HEALTH & FITNESS ASSESSMENT (config: content/assessment.js) ====
+    (function () {
+      const CONFIG = window.D6_ASSESSMENT && window.D6_ASSESSMENT.assessment;
+      const openBtn = document.getElementById("assessOpen");
+      const modal = document.getElementById("assessModal");
+      const assessBody = document.getElementById("assessBody");
+
+      if (!CONFIG || !openBtn || !modal) {
+        if (openBtn) openBtn.hidden = true;
+        return;
+      }
+
+      let state = null;
+      let lastFocus = null;
+
+      function esc(value) {
+        return String(value).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+
+      function newState() {
+        return { step: "intro", index: 0, answers: {}, result: null, details: null };
+      }
+
+      function isAnswered(q) {
+        return (state.answers[q.id] || []).length > 0;
+      }
+
+      function warn(message) {
+        const el = document.getElementById("assessWarn");
+        if (el) el.textContent = message;
+      }
+
+      function open() {
+        lastFocus = document.activeElement;
+        state = newState();
+        render();
+        modal.hidden = false;
+        document.documentElement.style.overflow = "hidden";
+        const first = assessBody.querySelector("button");
+        if (first) first.focus();
+      }
+
+      function close() {
+        modal.hidden = true;
+        document.documentElement.style.overflow = "";
+        if (lastFocus) lastFocus.focus();
+      }
+
+      function render() {
+        if (state.step === "intro") renderIntro();
+        else if (state.step === "question") renderQuestion();
+        else if (state.step === "review") renderReview();
+        else if (state.step === "score") renderScore();
+        else if (state.step === "form") renderForm();
+        else if (state.step === "report") renderReport();
+        modal.scrollTop = 0;
+      }
+
+      function renderIntro() {
+        assessBody.innerHTML =
+          '<span class="assess-eyebrow">Health &amp; Fitness Assessment</span>' +
+          '<h3>' + esc(CONFIG.intro.headline) + '</h3>' +
+          '<p>' + esc(CONFIG.intro.body) + '</p>' +
+          '<div class="assess-actions">' +
+            '<button type="button" class="btn-link" data-action="close">Not now</button>' +
+            '<button type="button" class="btn" data-action="start">START ASSESSMENT &rarr;</button>' +
+          '</div>';
+      }
+
+      function renderQuestion() {
+        const total = CONFIG.questions.length;
+        const i = state.index;
+        const q = CONFIG.questions[i];
+        const multi = q.type === "multiple";
+        const chosen = state.answers[q.id] || [];
+
+        const options = q.options.map(function (o, idx) {
+          const on = chosen.indexOf(idx) !== -1;
+          return '<label class="assess-opt' + (on ? ' selected' : '') + '">' +
+            '<input type="' + (multi ? 'checkbox' : 'radio') + '" name="assessOpt" value="' + idx + '"' + (on ? ' checked' : '') + ' />' +
+            '<span>' + esc(o.label) + '</span></label>';
+        }).join("");
+
+        assessBody.innerHTML =
+          '<span class="assess-eyebrow">Question ' + (i + 1) + ' of ' + total + '</span>' +
+          '<div class="assess-progress" aria-hidden="true"><span style="width:' + Math.round(((i + 1) / total) * 100) + '%"></span></div>' +
+          '<h3>' + esc(q.text) + '</h3>' +
+          '<form data-form="question" novalidate>' +
+            '<div class="assess-opts">' + options + '</div>' +
+            '<div class="assess-warn" id="assessWarn" role="alert"></div>' +
+            '<div class="assess-actions">' +
+              (i > 0 ? '<button type="button" class="btn-link" data-action="back">&larr; Back</button>' : '<span></span>') +
+              '<button type="submit" class="btn">' + (i === total - 1 ? 'REVIEW ANSWERS' : 'NEXT &rarr;') + '</button>' +
+            '</div>' +
+          '</form>';
+      }
+
+      function renderReview() {
+        const items = CONFIG.questions.map(function (q, i) {
+          const labels = (state.answers[q.id] || []).map(function (idx) { return q.options[idx].label; });
+          return '<li><div><div class="q">' + (i + 1) + '. ' + esc(q.text) + '</div>' +
+            '<div class="a">' + esc(labels.join(", ") || "Not answered") + '</div></div>' +
+            '<button type="button" data-action="change" data-index="' + i + '">Change</button></li>';
+        }).join("");
+
+        assessBody.innerHTML =
+          '<span class="assess-eyebrow">Review your answers</span>' +
+          '<h3>Check before you see your score</h3>' +
+          '<ul class="assess-review">' + items + '</ul>' +
+          '<div class="assess-warn" id="assessWarn" role="alert"></div>' +
+          '<div class="assess-actions">' +
+            '<button type="button" class="btn-link" data-action="back-question">&larr; Back</button>' +
+            '<button type="button" class="btn" data-action="see-score">SEE MY SCORE</button>' +
+          '</div>';
+      }
+
+      // Scoring runs entirely from the config. The visitor never sees or edits the numbers.
+      function scoreAll() {
+        const earned = {};
+        const possible = {};
+        CONFIG.categories.forEach(function (c) { earned[c.id] = 0; possible[c.id] = 0; });
+
+        CONFIG.questions.forEach(function (q) {
+          const allScores = q.options.map(function (o) { return o.score; });
+          const chosenScores = (state.answers[q.id] || []).map(function (idx) { return q.options[idx].score; });
+          let got;
+          let max;
+          if (q.type === "multiple") {
+            max = q.max_score != null ? q.max_score : allScores.reduce(function (a, b) { return a + b; }, 0);
+            got = Math.min(chosenScores.reduce(function (a, b) { return a + b; }, 0), max);
+          } else {
+            max = Math.max.apply(null, allScores);
+            got = chosenScores.length ? chosenScores[0] : 0;
+          }
+          earned[q.category] += got;
+          possible[q.category] += max;
+        });
+
+        const categories = CONFIG.categories.map(function (c) {
+          const pct = possible[c.id] ? Math.round((earned[c.id] / possible[c.id]) * 100) : 0;
+          const band = CONFIG.bands.find(function (b) { return pct >= b.min && pct <= b.max; });
+          return { id: c.id, name: c.name, weight: c.weight, pct: pct, band: band, suggestion: c.suggestions[band.id] };
+        });
+
+        const overall = Math.round(categories.reduce(function (sum, c) { return sum + c.pct * c.weight; }, 0) / 100);
+        const stage = CONFIG.stages.find(function (s) { return overall >= s.min && overall <= s.max; });
+        const weakest = categories.reduce(function (a, b) { return b.pct < a.pct ? b : a; });
+
+        return { overall: overall, stage: stage, categories: categories, weakest: weakest };
+      }
+
+      function renderScore() {
+        const r = state.result;
+        assessBody.innerHTML =
+          '<span class="assess-eyebrow">Your overall score</span>' +
+          '<div class="assess-score"><span class="big">' + r.overall + '</span><span class="of">/ 100</span></div>' +
+          '<span class="assess-stage">' + esc(r.stage.label) + '</span>' +
+          '<p>' + esc(r.stage.description) + '</p>' +
+          '<p>Want a breakdown by category, with a suggestion for each area? Get your detailed report below.</p>' +
+          '<div class="assess-actions">' +
+            '<button type="button" class="btn-link" data-action="retake">Retake</button>' +
+            '<button type="button" class="btn" data-action="detail">GET MY DETAILED REPORT</button>' +
+          '</div>' +
+          '<div class="assess-talk"><a href="#book" data-action="talk">Talk to our coach &rarr;</a></div>';
+      }
+
+      function renderForm() {
+        assessBody.innerHTML =
+          '<span class="assess-eyebrow">Detailed report</span>' +
+          '<h3>Enter your details to see your report</h3>' +
+          '<p>Your name and mobile number are needed to show your detailed report.</p>' +
+          '<form data-form="details" novalidate>' +
+            '<div class="assess-fields">' +
+              '<div class="field"><label for="assessName">Full Name</label>' +
+                '<input id="assessName" name="name" type="text" placeholder="Your Full Name" autocomplete="name" required /></div>' +
+              '<div class="field"><label for="assessMobile">Mobile Number</label>' +
+                '<input id="assessMobile" name="mobile" type="tel" placeholder="Mobile Number (e.g. +91 98765 43210)" autocomplete="tel" required /></div>' +
+            '</div>' +
+            '<p class="assess-notice">By pressing Show Detailed Report, you agree that D6 Fitness Studio may store your name and mobile number.</p>' +
+            '<button class="btn btn-block" id="assessSubmit" type="submit">SHOW DETAILED REPORT</button>' +
+            '<div class="form-status" id="assessStatus" role="status" aria-live="polite"></div>' +
+          '</form>' +
+          '<div class="assess-actions"><button type="button" class="btn-link" data-action="back-score">&larr; Back to my score</button></div>';
+      }
+
+      function renderReport() {
+        const r = state.result;
+        const firstName = state.details.name.split(" ")[0];
+        const cats = r.categories.map(function (c) {
+          return '<div class="assess-cat">' +
+            '<div class="assess-cat-head"><span>' + esc(c.name) + '</span><span>' + c.pct + ' / 100</span></div>' +
+            '<div class="assess-bar" aria-hidden="true"><span style="width:' + c.pct + '%"></span></div>' +
+            '<div class="assess-band">' + esc(c.band.label) + '</div>' +
+            '<p>' + esc(c.suggestion) + '</p>' +
+          '</div>';
+        }).join("");
+
+        assessBody.innerHTML =
+          '<span class="assess-eyebrow">Detailed report for ' + esc(firstName) + '</span>' +
+          '<h3>Your Health &amp; Fitness Report</h3>' +
+          '<div class="assess-score"><span class="big">' + r.overall + '</span><span class="of">/ 100</span></div>' +
+          '<span class="assess-stage">' + esc(r.stage.label) + '</span>' +
+          '<p>' + esc(r.stage.description) + '</p>' +
+          '<div>' + cats + '</div>' +
+          '<div class="assess-focus"><strong>Focus area: ' + esc(r.weakest.name) + '.</strong> ' + esc(r.weakest.suggestion) + '</div>' +
+          '<div class="assess-actions">' +
+            '<button type="button" class="btn-link" data-action="retake">Retake</button>' +
+            '<a class="btn" href="#book" data-action="talk">TALK TO OUR COACH</a>' +
+          '</div>';
+      }
+
+      // Saves the details (no-cors GET, same pattern as the trial form), then shows the report.
+      function submitDetails(formEl) {
+        const name = formEl.elements.name.value.trim();
+        const mobile = formEl.elements.mobile.value.trim();
+        const statusEl = document.getElementById("assessStatus");
+        const submitEl = document.getElementById("assessSubmit");
+
+        function fail(message) {
+          statusEl.textContent = message;
+          statusEl.className = "form-status err";
+        }
+
+        if (!name) return fail("Please enter your name.");
+        if (!/^[+\d][\d\s-]{7,}$/.test(mobile)) return fail("Please enter a valid mobile number.");
+
+        const r = state.result;
+        state.details = { name: name, mobile: mobile };
+        submitEl.disabled = true;
+        submitEl.textContent = "SAVING...";
+        statusEl.textContent = "";
+        statusEl.className = "form-status";
+
+        const params = new URLSearchParams({
+          type: "assessment",
+          name: name,
+          mobile: mobile,
+          overall: r.overall,
+          stage: r.stage.label,
+          version: CONFIG.version
+        });
+        r.categories.forEach(function (c) { params.set(c.id, c.pct); });
+
+        const showReport = function () { state.step = "report"; render(); };
+        fetch(SCRIPT_URL + "?" + params.toString(), { method: "GET", mode: "no-cors" })
+          .then(showReport, showReport);
+      }
+
+      assessBody.addEventListener("click", function (e) {
+        const el = e.target.closest("[data-action]");
+        if (!el) return;
+        const action = el.dataset.action;
+
+        if (action === "close") return close();
+        if (action === "talk") return close();
+        if (action === "start") { state.step = "question"; state.index = 0; return render(); }
+        if (action === "back") { state.index = Math.max(0, state.index - 1); return render(); }
+        if (action === "back-question") { state.step = "question"; state.index = CONFIG.questions.length - 1; return render(); }
+        if (action === "change") { state.step = "question"; state.index = Number(el.dataset.index); return render(); }
+        if (action === "see-score") {
+          const missing = CONFIG.questions.findIndex(function (q) { return !isAnswered(q); });
+          if (missing !== -1) {
+            state.step = "question";
+            state.index = missing;
+            render();
+            warn("Please answer this question to continue.");
+            return;
+          }
+          state.result = scoreAll();
+          state.step = "score";
+          return render();
+        }
+        if (action === "detail") { state.step = "form"; return render(); }
+        if (action === "back-score") { state.step = "score"; return render(); }
+        if (action === "retake") { state = newState(); state.step = "question"; return render(); }
+      });
+
+      assessBody.addEventListener("change", function (e) {
+        const input = e.target;
+        if (input.name !== "assessOpt") return;
+        const q = CONFIG.questions[state.index];
+        const idx = Number(input.value);
+
+        if (q.type === "multiple") {
+          const list = (state.answers[q.id] || []).slice();
+          const pos = list.indexOf(idx);
+          if (input.checked && pos === -1) list.push(idx);
+          if (!input.checked && pos !== -1) list.splice(pos, 1);
+          state.answers[q.id] = list;
+        } else {
+          state.answers[q.id] = [idx];
+        }
+
+        assessBody.querySelectorAll(".assess-opt").forEach(function (label) {
+          label.classList.toggle("selected", label.querySelector("input").checked);
+        });
+        warn("");
+      });
+
+      assessBody.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formEl = e.target;
+
+        if (formEl.dataset.form === "question") {
+          const q = CONFIG.questions[state.index];
+          if (!isAnswered(q)) {
+            warn(q.type === "multiple" ? "Please select at least one option to continue." : "Please choose an answer to continue.");
+            return;
+          }
+          if (state.index < CONFIG.questions.length - 1) { state.index++; render(); }
+          else { state.step = "review"; render(); }
+          return;
+        }
+
+        if (formEl.dataset.form === "details") submitDetails(formEl);
+      });
+
+      openBtn.addEventListener("click", open);
+      document.getElementById("assessClose").addEventListener("click", close);
+      modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !modal.hidden) close();
+      });
+    })();
   </script>
 </body>
 </html>
