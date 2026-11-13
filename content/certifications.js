@@ -14,5 +14,9 @@ window.D6_CERTIFICATIONS = [
     "file": "assets/certifications/sports-fitness-nutrition.jpg",
     "title": "Certificate in Sports and Fitness Nutrition",
     "issuer": "UNSCHOOL"
+  },
+  {
+    "file": "assets/certifications/Dilip_Certificate_High_Resolution.jpg",
+    "title": "Master Trainer"
   }
 ];
