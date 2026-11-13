@@ -65,7 +65,7 @@
         "id": "q1",
         "category": "activity",
         "type": "single",
-        "text": "How often do you exercise?",
+        "text": "How often do you exercise in a week?",
         "options": [
           { "label": "0 days",   "score": 0 },
           { "label": "1 to 2 days", "score": 5 },
@@ -90,19 +90,20 @@
         "id": "q3",
         "category": "sleep",
         "type": "yesno",
-        "text": "Do you usually sleep 7 or more hours a night?",
+        "text": "How long do you sleep during in the night?",
         "options": [
-          { "label": "Yes", "score": 10 },
-          { "label": "No",  "score": 0 }
+          { "label": "Less than 5 hours", "score": 0 },
+          { "label": "5-7 hours",  "score": 5 },
+		  { "label": "7+ hours",  "score": 10 }
         ]
       },
       {
         "id": "q4",
         "category": "endurance",
         "type": "single",
-        "text": "How long can you run or jog continuously?",
+        "text": "How long can you walk continuously?",
         "options": [
-          { "label": "I cannot run continuously",                     "score": 0 },
+          { "label": "I cannot walk continuously",                     "score": 0 },
           { "label": "5-10 minutes", "score": 5 },
           { "label": "10-30 minutes",  "score": 7 },
 		  { "label": "More than 30 minutes",  "score": 10 }
@@ -114,7 +115,7 @@
         "type": "single",
         "text": "How long is a typical workout session?",
         "options": [
-          { "label": "Under 20 minutes", "score": 0 },
+          { "label": "I don't workout", "score": 0 },
           { "label": "20 to 39 minutes", "score": 4 },
           { "label": "40 to 60 minutes", "score": 7 },
           { "label": "Over 60 minutes",  "score": 10 }
