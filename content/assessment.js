@@ -101,7 +101,7 @@ window.D6_ASSESSMENT = {
         "id": "q1",
         "category": "activity",
         "type": "single",
-        "text": "How often do you exercise?",
+        "text": "How often do you exercise in a week?",
         "options": [
           {
             "label": "0 days",
@@ -149,40 +149,44 @@ window.D6_ASSESSMENT = {
       {
         "id": "q3",
         "category": "sleep",
-        "type": "yesno",
-        "text": "Do you usually sleep 7 or more hours a night?",
+        "type": "single",
+        "text": "How many hours do you sleep at night?",
         "options": [
           {
-            "label": "Yes",
-            "score": 10
+            "label": "Less than 5 hours",
+            "score": 0
           },
           {
-            "label": "No",
-            "score": 0
+            "label": "5 to 6 hours",
+            "score": 5
+          },
+          {
+            "label": "7 or more hours",
+            "score": 10
           }
         ]
       },
       {
         "id": "q4",
-        "category": "endurance",
+        "category": "activity",
         "type": "single",
-        "text": "How long can you run or jog continuously?",
+        "text": "How many steps do you complete every day?",
         "options": [
           {
-            "label": "I cannot run continuously",
-            "score": 0
-          },
-          {
-            "label": "5-10 minutes",
-            "score": 5
-          },
-          {
-            "label": "10-30 minutes",
-            "score": 7
-          },
-          {
-            "label": "More than 30 minutes",
+            "label": "10,000 or more",
             "score": 10
+          },
+          {
+            "label": "7,000 to 9,999",
+            "score": 6
+          },
+          {
+            "label": "Less than 7,000",
+            "score": 3
+          },
+          {
+            "label": "Not sure / I don't track",
+            "score": 4
           }
         ]
       },
@@ -194,7 +198,7 @@ window.D6_ASSESSMENT = {
         "options": [
           {
             "label": "Under 20 minutes",
-            "score": 0
+            "score": 2
           },
           {
             "label": "20 to 39 minutes",
@@ -207,28 +211,37 @@ window.D6_ASSESSMENT = {
           {
             "label": "Over 60 minutes",
             "score": 10
+          },
+          {
+            "label": "I don't workout",
+            "score": 0
           }
         ]
       },
       {
         "id": "q6",
-        "category": "sleep",
-        "type": "single",
-        "text": "How often do you wake up feeling rested?",
+        "category": "activity",
+        "type": "multiple",
+        "text": "Which kinds of activity do you do? (select all that apply)",
         "options": [
           {
-            "label": "Rarely",
-            "score": 0
-          },
-          {
-            "label": "Sometimes",
+            "label": "Yoga",
             "score": 5
           },
           {
-            "label": "Most days",
-            "score": 10
+            "label": "Strength training",
+            "score": 7
+          },
+          {
+            "label": "Cardio training",
+            "score": 5
+          },
+          {
+            "label": "I don't do any activity",
+            "score": 0
           }
-        ]
+        ],
+        "max_score": 10
       },
       {
         "id": "q7",
@@ -261,15 +274,15 @@ window.D6_ASSESSMENT = {
             "score": 0
           },
           {
-            "label": "15-30 seconds",
+            "label": "15 to 29 seconds",
             "score": 3
           },
           {
-            "label": "30-60 seconds",
+            "label": "30 to 59 seconds",
             "score": 5
           },
           {
-            "label": "More than 60 seconds",
+            "label": "60 seconds or more",
             "score": 10
           }
         ]

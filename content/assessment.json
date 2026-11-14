@@ -8,15 +8,50 @@
       "body": "Answer a few quick questions about your habits. It takes about 3 minutes."
     },
     "bands": [
-      { "id": "low",  "min": 0,  "max": 39,  "label": "Needs focus" },
-      { "id": "mid",  "min": 40, "max": 69,  "label": "Building" },
-      { "id": "high", "min": 70, "max": 100, "label": "Strong" }
+      {
+        "id": "low",
+        "min": 0,
+        "max": 39,
+        "label": "Needs focus"
+      },
+      {
+        "id": "mid",
+        "min": 40,
+        "max": 69,
+        "label": "Building"
+      },
+      {
+        "id": "high",
+        "min": 70,
+        "max": 100,
+        "label": "Strong"
+      }
     ],
     "stages": [
-      { "min": 0,  "max": 39,  "label": "Beginner",   "description": "A great place to start. Small, steady changes will make the biggest difference." },
-      { "min": 40, "max": 59,  "label": "Developing", "description": "You have a good base. Consistency is the next step." },
-      { "min": 60, "max": 79,  "label": "Active",     "description": "Your habits are working for you. Fine-tune the areas that lag behind." },
-      { "min": 80, "max": 100, "label": "Advanced",   "description": "Excellent habits across the board. Keep challenging yourself." }
+      {
+        "min": 0,
+        "max": 39,
+        "label": "Beginner",
+        "description": "A great place to start. Small, steady changes will make the biggest difference."
+      },
+      {
+        "min": 40,
+        "max": 59,
+        "label": "Developing",
+        "description": "You have a good base. Consistency is the next step."
+      },
+      {
+        "min": 60,
+        "max": 79,
+        "label": "Active",
+        "description": "Your habits are working for you. Fine-tune the areas that lag behind."
+      },
+      {
+        "min": 80,
+        "max": 100,
+        "label": "Advanced",
+        "description": "Excellent habits across the board. Keep challenging yourself."
+      }
     ],
     "categories": [
       {
@@ -24,8 +59,8 @@
         "name": "Physical Activity",
         "weight": 30,
         "suggestions": {
-          "low":  "Start with 2 or 3 short sessions a week and build up gradually.",
-          "mid":  "Add one more session a week and keep a steady routine.",
+          "low": "Start with 2 or 3 short sessions a week and build up gradually.",
+          "mid": "Add one more session a week and keep a steady routine.",
           "high": "Keep your current routine and add variety to stay ahead."
         }
       },
@@ -34,8 +69,8 @@
         "name": "Sleep & Recovery",
         "weight": 20,
         "suggestions": {
-          "low":  "Aim for a consistent bedtime and 7 to 8 hours of sleep each night.",
-          "mid":  "Keep a regular sleep schedule and wind down 30 minutes before bed.",
+          "low": "Aim for a consistent bedtime and 7 to 8 hours of sleep each night.",
+          "mid": "Keep a regular sleep schedule and wind down 30 minutes before bed.",
           "high": "Your recovery is strong. Keep up the routine."
         }
       },
@@ -44,8 +79,8 @@
         "name": "Endurance",
         "weight": 25,
         "suggestions": {
-          "low":  "Add one easy conditioning session each week and increase it slowly.",
-          "mid":  "Work on continuous 20 to 30 minute runs to build your base.",
+          "low": "Add one easy conditioning session each week and increase it slowly.",
+          "mid": "Work on continuous 20 to 30 minute runs to build your base.",
           "high": "Add interval sessions to push your endurance further."
         }
       },
@@ -54,8 +89,8 @@
         "name": "Nutrition",
         "weight": 25,
         "suggestions": {
-          "low":  "Start with one change: add vegetables to your daily meals and drink enough water.",
-          "mid":  "Build on your habits by adding protein to every meal.",
+          "low": "Start with one change: add vegetables to your daily meals and drink enough water.",
+          "mid": "Build on your habits by adding protein to every meal.",
           "high": "Keep your nutrition habits consistent and review them with your coach."
         }
       }
@@ -67,10 +102,22 @@
         "type": "single",
         "text": "How often do you exercise in a week?",
         "options": [
-          { "label": "0 days",   "score": 0 },
-          { "label": "1 to 2 days", "score": 5 },
-          { "label": "3 to 4 days", "score": 8 },
-          { "label": "5+ days",  "score": 10 }
+          {
+            "label": "0 days",
+            "score": 0
+          },
+          {
+            "label": "1 to 2 days",
+            "score": 5
+          },
+          {
+            "label": "3 to 4 days",
+            "score": 8
+          },
+          {
+            "label": "5+ days",
+            "score": 10
+          }
         ]
       },
       {
@@ -79,34 +126,67 @@
         "type": "multiple",
         "text": "Which of these do you do regularly? (select all that apply)",
         "options": [
-          { "label": "Eat vegetables daily",     "score": 3 },
-          { "label": "Drink enough water",       "score": 3 },
-          { "label": "Limit sugary drinks",      "score": 2 },
-          { "label": "Eat protein at each meal", "score": 2 }
+          {
+            "label": "Eat vegetables daily",
+            "score": 3
+          },
+          {
+            "label": "Drink enough water",
+            "score": 3
+          },
+          {
+            "label": "Limit sugary drinks",
+            "score": 2
+          },
+          {
+            "label": "Eat protein at each meal",
+            "score": 2
+          }
         ],
         "max_score": 10
       },
       {
         "id": "q3",
         "category": "sleep",
-        "type": "yesno",
-        "text": "How long do you sleep during in the night?",
+        "type": "single",
+        "text": "How many hours do you sleep at night?",
         "options": [
-          { "label": "Less than 5 hours", "score": 0 },
-          { "label": "5-7 hours",  "score": 5 },
-		  { "label": "7+ hours",  "score": 10 }
+          {
+            "label": "Less than 5 hours",
+            "score": 0
+          },
+          {
+            "label": "5 to 6 hours",
+            "score": 5
+          },
+          {
+            "label": "7 or more hours",
+            "score": 10
+          }
         ]
       },
       {
         "id": "q4",
-        "category": "endurance",
+        "category": "activity",
         "type": "single",
-        "text": "How long can you walk continuously?",
+        "text": "How many steps do you complete every day?",
         "options": [
-          { "label": "I cannot walk continuously",                     "score": 0 },
-          { "label": "5-10 minutes", "score": 5 },
-          { "label": "10-30 minutes",  "score": 7 },
-		  { "label": "More than 30 minutes",  "score": 10 }
+          {
+            "label": "10,000 or more",
+            "score": 10
+          },
+          {
+            "label": "7,000 to 9,999",
+            "score": 6
+          },
+          {
+            "label": "Less than 7,000",
+            "score": 3
+          },
+          {
+            "label": "Not sure / I don't track",
+            "score": 4
+          }
         ]
       },
       {
@@ -115,68 +195,143 @@
         "type": "single",
         "text": "How long is a typical workout session?",
         "options": [
-          { "label": "I don't workout", "score": 0 },
-          { "label": "20 to 39 minutes", "score": 4 },
-          { "label": "40 to 60 minutes", "score": 7 },
-          { "label": "Over 60 minutes",  "score": 10 }
+          {
+            "label": "Under 20 minutes",
+            "score": 2
+          },
+          {
+            "label": "20 to 39 minutes",
+            "score": 4
+          },
+          {
+            "label": "40 to 60 minutes",
+            "score": 7
+          },
+          {
+            "label": "Over 60 minutes",
+            "score": 10
+          },
+          {
+            "label": "I don't workout",
+            "score": 0
+          }
         ]
       },
       {
         "id": "q6",
-        "category": "sleep",
-        "type": "single",
-        "text": "How often do you wake up feeling rested?",
+        "category": "activity",
+        "type": "multiple",
+        "text": "Which kinds of activity do you do? (select all that apply)",
         "options": [
-          { "label": "Rarely",     "score": 0 },
-          { "label": "Sometimes",  "score": 5 },
-          { "label": "Most days",  "score": 10 }
-        ]
+          {
+            "label": "Yoga",
+            "score": 5
+          },
+          {
+            "label": "Strength training",
+            "score": 7
+          },
+          {
+            "label": "Cardio training",
+            "score": 5
+          },
+          {
+            "label": "I don't do any activity",
+            "score": 0
+          }
+        ],
+        "max_score": 10
       },
-	  {
+      {
         "id": "q7",
         "category": "activity",
         "type": "single",
         "text": "How many push-ups can you perform with good form?",
         "options": [
-          { "label": "0-5",     "score": 0 },
-          { "label": "6-15",  "score": 5 },
-          { "label": "More than 15",  "score": 10 }
+          {
+            "label": "0-5",
+            "score": 0
+          },
+          {
+            "label": "6-15",
+            "score": 5
+          },
+          {
+            "label": "More than 15",
+            "score": 10
+          }
         ]
       },
-	  {
+      {
         "id": "q8",
         "category": "activity",
         "type": "single",
         "text": "How long can you hold a plank?",
         "options": [
-		  { "label": "Less than 15 seconds",     "score": 0 },
-          { "label": "15-30 seconds",     "score": 3 },
-          { "label": "30-60 seconds",  "score": 5 },
-          { "label": "More than 60 seconds",  "score": 10 }
+          {
+            "label": "Less than 15 seconds",
+            "score": 0
+          },
+          {
+            "label": "15 to 29 seconds",
+            "score": 3
+          },
+          {
+            "label": "30 to 59 seconds",
+            "score": 5
+          },
+          {
+            "label": "60 seconds or more",
+            "score": 10
+          }
         ]
       },
-	  {
+      {
         "id": "q9",
         "category": "activity",
         "type": "single",
         "text": "How active are you in your daily life?",
         "options": [
-		  { "label": "Mostly sitting",     "score": 0 },
-          { "label": "Lightly active",     "score": 3 },
-          { "label": "Moderately active",  "score": 5 },
-          { "label": "Very active",  "score": 10 }
+          {
+            "label": "Mostly sitting",
+            "score": 0
+          },
+          {
+            "label": "Lightly active",
+            "score": 3
+          },
+          {
+            "label": "Moderately active",
+            "score": 5
+          },
+          {
+            "label": "Very active",
+            "score": 10
+          }
         ]
       },
-	  {
+      {
         "id": "q10",
         "category": "endurance",
         "type": "single",
         "text": "How well do you recover after exercise?",
         "options": [
-		  { "label": "I need several days",     "score": 0 },
-          { "label": "Usually 1-2 days",     "score": 3 },
-          { "label": "Usually by the next day",  "score": 5 },
-          { "label": "I recover quickly and it does not affect my daily activities",  "score": 10 }
+          {
+            "label": "I need several days",
+            "score": 0
+          },
+          {
+            "label": "Usually 1-2 days",
+            "score": 3
+          },
+          {
+            "label": "Usually by the next day",
+            "score": 5
+          },
+          {
+            "label": "I recover quickly and it does not affect my daily activities",
+            "score": 10
+          }
         ]
       }
     ]
